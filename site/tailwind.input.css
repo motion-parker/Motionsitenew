@@ -1,0 +1,152 @@
+@import "tailwindcss";
+
+@source "./index.html";
+
+:root {
+  --font-size: 16px;
+  --background: #ffffff;
+  --foreground: oklch(0.145 0 0);
+  --card: #ffffff;
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: #030213;
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.95 0.0058 264.53);
+  --secondary-foreground: #030213;
+  --muted: #ececf0;
+  --muted-foreground: #717182;
+  --accent: #e9ebef;
+  --accent-foreground: #030213;
+  --destructive: #d4183d;
+  --destructive-foreground: #ffffff;
+  --border: rgba(0, 0, 0, 0.1);
+  --input: transparent;
+  --input-background: #f3f3f5;
+  --switch-background: #cbced4;
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  --ring: oklch(0.708 0 0);
+  --radius: 0.625rem;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+    outline-color: color-mix(in oklch, var(--color-ring) 50%, transparent);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+  }
+
+  html {
+    font-size: var(--font-size);
+  }
+}
+
+/* ─── Hero: load-time fade-in ──────────────────────────── */
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+.hero-content {
+  animation: fade-in-up 0.8s ease-out forwards;
+}
+
+/* ─── Scroll arrow: delayed fade-in + bounce ───────────── */
+@keyframes arrow-appear {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes arrow-bob {
+  0%, 100% { transform: translateY(0);    }
+  50%       { transform: translateY(10px); }
+}
+
+.scroll-arrow {
+  animation:
+    arrow-appear 1s ease-out 1s both,
+    arrow-bob    2s ease-in-out 2s infinite;
+}
+
+/* ─── Scroll-reveal (IntersectionObserver adds .is-visible) */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.scroll-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.scroll-reveal-scale {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.scroll-reveal-scale.is-visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ─── Button micro-interactions ────────────────────────── */
+.btn-primary,
+.btn-outline {
+  transition: transform 0.15s ease-out, box-shadow 0.15s ease-out;
+}
+
+.btn-primary:hover  { transform: scale(1.02); }
+.btn-primary:active { transform: scale(0.98); }
+.btn-outline:hover  { transform: scale(1.02); }
+.btn-outline:active { transform: scale(0.98); }
+
+/* Arrow icon inside group button */
+.arrow-icon {
+  transition: transform 0.15s ease-out;
+}
+
+.btn-primary:hover .arrow-icon {
+  transform: translateX(4px);
+}
+
+/* Play button hover (testimonial cards) */
+.play-btn {
+  transition: transform 0.2s ease-out;
+}
+
+.play-btn:hover {
+  transform: scale(1.1);
+}

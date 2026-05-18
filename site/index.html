@@ -110,8 +110,7 @@
       </div>
     </div>
 
-    <!-- Bouncing scroll arrow: use style for left so the CSS animation's translateY
-         doesn't conflict with Tailwind v4's separate `translate` property -->
+    <!-- Bouncing scroll arrow: inline left avoids conflict with Tailwind v4's `translate` property -->
     <div class="scroll-arrow absolute bottom-10 text-muted-foreground"
          style="left: calc(50% - 12px);"
          aria-hidden="true">
@@ -122,9 +121,371 @@
     </div>
   </section>
 
+  <main>
+
+    <!-- ═══════════════════════════════════════════════════
+         FEATURES — video testimonial cards
+    ═══════════════════════════════════════════════════ -->
+    <section id="features" class="py-32 px-6 bg-background">
+      <div class="max-w-7xl mx-auto">
+
+        <!-- Section heading -->
+        <div class="text-center mb-20 scroll-reveal">
+          <h2 class="text-5xl md:text-6xl font-semibold mb-6 bg-gradient-to-br from-foreground to-foreground/60 bg-clip-text text-transparent">
+            Don't take our word for it.<br>Hear it from the businesses we scale.
+          </h2>
+          <p class="text-xl text-muted-foreground max-w-4xl mx-auto">
+            Three of our clients on what changed when we took over their growth systems.
+          </p>
+        </div>
+
+        <!-- Cards grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+          <!-- Card 1 -->
+          <article class="relative rounded-2xl overflow-hidden min-h-[500px] group cursor-pointer border-2 border-border shadow-sm scroll-reveal" style="transition-delay: 0s;">
+            <div class="absolute inset-0 bg-black">
+              <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&h=1200&fit=crop"
+                   srcset="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=600&fit=crop 400w,
+                           https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&h=1200&fit=crop 800w"
+                   sizes="(max-width: 1024px) calc(100vw - 48px), calc((min(100vw, 1280px) - 96px) / 3)"
+                   alt="Sarah Chen, CEO of TechFlow"
+                   class="w-full h-full object-cover opacity-90">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/30"></div>
+            </div>
+            <div class="absolute top-4 right-4 px-2 py-1 bg-black/60 backdrop-blur-sm rounded text-white text-xs font-medium">0:42</div>
+            <div class="relative min-h-[500px] flex flex-col justify-center items-center p-8">
+              <div class="play-btn w-16 h-16 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center shadow-lg">
+                <svg class="w-7 h-7 ml-1" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <polygon points="5 3 19 12 5 21 5 3"/>
+                </svg>
+              </div>
+            </div>
+            <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+              <p class="text-base mb-2 font-normal">"This platform completely transformed our business"</p>
+              <div class="text-sm font-medium">Sarah Chen</div>
+              <div class="text-xs" style="color: rgba(255,255,255,0.7);">CEO, TechFlow</div>
+            </div>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="relative rounded-2xl overflow-hidden min-h-[500px] group cursor-pointer border-2 border-border shadow-sm scroll-reveal" style="transition-delay: 0.1s;">
+            <div class="absolute inset-0 bg-black">
+              <img src="https://images.unsplash.com/photo-1600486913747-55e5470d6f40?w=800&h=1200&fit=crop"
+                   srcset="https://images.unsplash.com/photo-1600486913747-55e5470d6f40?w=400&h=600&fit=crop 400w,
+                           https://images.unsplash.com/photo-1600486913747-55e5470d6f40?w=800&h=1200&fit=crop 800w"
+                   sizes="(max-width: 1024px) calc(100vw - 48px), calc((min(100vw, 1280px) - 96px) / 3)"
+                   alt="Michael Rodriguez, Founder of StartupX"
+                   class="w-full h-full object-cover opacity-90">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/30"></div>
+            </div>
+            <div class="absolute top-4 right-4 px-2 py-1 bg-black/60 backdrop-blur-sm rounded text-white text-xs font-medium">1:15</div>
+            <div class="relative min-h-[500px] flex flex-col justify-center items-center p-8">
+              <div class="play-btn w-16 h-16 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center shadow-lg">
+                <svg class="w-7 h-7 ml-1" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <polygon points="5 3 19 12 5 21 5 3"/>
+                </svg>
+              </div>
+            </div>
+            <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+              <p class="text-base mb-2 font-normal">"We saw 300% growth in just 3 months"</p>
+              <div class="text-sm font-medium">Michael Rodriguez</div>
+              <div class="text-xs" style="color: rgba(255,255,255,0.7);">Founder, StartupX</div>
+            </div>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="relative rounded-2xl overflow-hidden min-h-[500px] group cursor-pointer border-2 border-border shadow-sm scroll-reveal" style="transition-delay: 0.2s;">
+            <div class="absolute inset-0 bg-black">
+              <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=800&h=1200&fit=crop"
+                   srcset="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=600&fit=crop 400w,
+                           https://images.unsplash.com/photo-1580489944761-15a19d654956?w=800&h=1200&fit=crop 800w"
+                   sizes="(max-width: 1024px) calc(100vw - 48px), calc((min(100vw, 1280px) - 96px) / 3)"
+                   alt="Emily Park, CMO of InnovateCo"
+                   class="w-full h-full object-cover opacity-90">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/30"></div>
+            </div>
+            <div class="absolute top-4 right-4 px-2 py-1 bg-black/60 backdrop-blur-sm rounded text-white text-xs font-medium">0:58</div>
+            <div class="relative min-h-[500px] flex flex-col justify-center items-center p-8">
+              <div class="play-btn w-16 h-16 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center shadow-lg">
+                <svg class="w-7 h-7 ml-1" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <polygon points="5 3 19 12 5 21 5 3"/>
+                </svg>
+              </div>
+            </div>
+            <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+              <p class="text-base mb-2 font-normal">"The best investment we've made this year"</p>
+              <div class="text-sm font-medium">Emily Park</div>
+              <div class="text-xs" style="color: rgba(255,255,255,0.7);">CMO, InnovateCo</div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════
+         SHOWCASE — stats + dashboard image
+    ═══════════════════════════════════════════════════ -->
+    <section id="showcase" class="py-32 px-6 bg-muted/20">
+      <div class="max-w-7xl mx-auto">
+
+        <!-- Section heading -->
+        <div class="text-center mb-16 scroll-reveal">
+          <h2 class="text-5xl md:text-6xl font-semibold mb-6 bg-gradient-to-br from-foreground to-foreground/60 bg-clip-text text-transparent">
+            Numbers like these don't happen by accident.
+          </h2>
+          <p class="text-xl text-muted-foreground max-w-2xl mx-auto">
+            They happen when your ads, your website, your email follow-up, and your local search all feed each other. That's exactly what we build.
+          </p>
+        </div>
+
+        <!-- Dashboard image -->
+        <div class="scroll-reveal-scale" style="transition-delay: 0.2s;">
+          <div class="relative rounded-3xl overflow-hidden shadow-2xl border border-border">
+            <div class="aspect-video bg-gradient-to-br from-primary/5 to-primary/10">
+              <img src="assets/images/meta-dashboard.png"
+                   srcset="assets/images/meta-dashboard-800.png 800w,
+                           assets/images/meta-dashboard.png 1672w"
+                   sizes="(max-width: 768px) calc(100vw - 48px), min(calc(100vw - 48px), 1232px)"
+                   alt="Motion Marketing Meta Ads performance dashboard showing $190K spend and $1.5M in revenue"
+                   class="w-full h-full object-cover">
+            </div>
+          </div>
+        </div>
+
+        <!-- Stats row -->
+        <div class="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8 text-center scroll-reveal" style="transition-delay: 0.4s;">
+          <div>
+            <div class="text-5xl font-semibold mb-2">50M+</div>
+            <div class="text-muted-foreground">Digital views generated</div>
+          </div>
+          <div>
+            <div class="text-5xl font-semibold mb-2">10K+</div>
+            <div class="text-muted-foreground">Creative hours invested</div>
+          </div>
+          <div>
+            <div class="text-5xl font-semibold mb-2">250+</div>
+            <div class="text-muted-foreground">Projects delivered</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════
+         TESTIMONIALS — FAQ / Q&A cards
+    ═══════════════════════════════════════════════════ -->
+    <section id="faq" class="py-32 px-6 bg-background">
+      <div class="max-w-7xl mx-auto">
+
+        <!-- Section heading -->
+        <div class="text-center mb-20 scroll-reveal">
+          <h2 class="text-5xl md:text-6xl font-semibold mb-6 bg-gradient-to-br from-foreground to-foreground/60 bg-clip-text text-transparent">
+            Real questions. Straight answers.
+          </h2>
+          <p class="text-xl text-muted-foreground max-w-2xl mx-auto">
+            The questions every service business asks before signing.
+          </p>
+        </div>
+
+        <!-- FAQ cards -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+          <!-- Card 1 -->
+          <div class="p-8 rounded-3xl bg-card border border-border scroll-reveal" style="transition-delay: 0s;">
+            <div class="mb-6">
+              <!-- HelpCircle icon -->
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#9EFF02"
+                   stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+                <path d="M12 17h.01"/>
+              </svg>
+            </div>
+            <div class="font-semibold mb-4 text-foreground">How long until I see results?</div>
+            <p class="text-lg mb-8 leading-relaxed text-foreground">
+              Most clients see initial lead changes in the first 30 days as targeting data builds. Real ROAS clarity takes 60 to 90 days. We tell you this upfront, not after you've signed.
+            </p>
+            <div>
+              <div class="font-medium">Timeline question</div>
+              <div class="text-sm text-muted-foreground">Asked by most new clients</div>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="p-8 rounded-3xl bg-card border border-border scroll-reveal" style="transition-delay: 0.1s;">
+            <div class="mb-6">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#9EFF02"
+                   stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+                <path d="M12 17h.01"/>
+              </svg>
+            </div>
+            <div class="font-semibold mb-4 text-foreground">What's the minimum ad spend to get started?</div>
+            <p class="text-lg mb-8 leading-relaxed text-foreground">
+              We recommend $1,500 per month for Essentials and $3,000+ for Digital Growth. Your ad spend is always separate from our retainer and stays in your account.
+            </p>
+            <div>
+              <div class="font-medium">Budget question</div>
+              <div class="text-sm text-muted-foreground">Asked before most discovery calls</div>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="p-8 rounded-3xl bg-card border border-border scroll-reveal" style="transition-delay: 0.2s;">
+            <div class="mb-6">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#9EFF02"
+                   stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+                <path d="M12 17h.01"/>
+              </svg>
+            </div>
+            <div class="font-semibold mb-4 text-foreground">What happens to my accounts if we part ways?</div>
+            <p class="text-lg mb-8 leading-relaxed text-foreground">
+              You own everything. Ad accounts, creative assets, email lists. We build inside your accounts so you are never dependent on us to access your own data.
+            </p>
+            <div>
+              <div class="font-medium">Ownership question</div>
+              <div class="text-sm text-muted-foreground">Asked by agency-burned clients</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════
+         TEAM
+    ═══════════════════════════════════════════════════ -->
+    <section id="team" class="py-32 px-6 bg-background">
+      <div class="max-w-7xl mx-auto">
+
+        <!-- Section heading -->
+        <div class="text-center mb-16 scroll-reveal">
+          <h2 class="text-5xl md:text-6xl font-semibold mb-6 bg-gradient-to-br from-foreground to-foreground/60 bg-clip-text text-transparent">
+            Meet the team behind your growth.
+          </h2>
+          <p class="text-xl text-muted-foreground max-w-2xl mx-auto">
+            Real people who actually care about your results.
+          </p>
+        </div>
+
+        <!-- Team members -->
+        <div class="flex flex-col md:flex-row gap-8 justify-center items-center max-w-4xl mx-auto">
+
+          <!-- Parker Harris -->
+          <div class="flex flex-col items-center scroll-reveal" style="transition-delay: 0s;">
+            <div class="w-72 h-72 rounded-3xl overflow-hidden mb-6 border-2 border-border">
+              <img src="assets/images/parker-harris.png"
+                   srcset="assets/images/parker-harris-400.png 400w,
+                           assets/images/parker-harris-800.png 800w"
+                   sizes="288px"
+                   alt="Parker Harris, Founder and Co-Owner of Motion Marketing"
+                   class="w-full h-full object-cover"
+                   style="transform: scale(1.15) translateY(0px);">
+            </div>
+            <div class="text-center">
+              <div class="font-semibold text-2xl mb-2">Parker Harris</div>
+              <div class="text-muted-foreground text-lg">Founder &amp; Co-Owner</div>
+            </div>
+          </div>
+
+          <!-- Taylor Jackson -->
+          <div class="flex flex-col items-center scroll-reveal" style="transition-delay: 0.1s;">
+            <div class="w-72 h-72 rounded-3xl overflow-hidden mb-6 border-2 border-border">
+              <img src="assets/images/taylor-jackson.png"
+                   srcset="assets/images/taylor-jackson-400.png 400w,
+                           assets/images/taylor-jackson-800.png 800w"
+                   sizes="288px"
+                   alt="Taylor Jackson, Co-Owner of Motion Marketing"
+                   class="w-full h-full object-cover"
+                   style="transform: scale(1.2) translateY(20px);">
+            </div>
+            <div class="text-center">
+              <div class="font-semibold text-2xl mb-2">Taylor Jackson</div>
+              <div class="text-muted-foreground text-lg">Co-Owner</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
   <!-- ═══════════════════════════════════════════════════
-       (remaining sections added in subsequent commits)
+       FINAL CTA + FOOTER
   ═══════════════════════════════════════════════════ -->
+  <section id="contact" class="py-32 px-6 bg-background">
+    <div class="max-w-5xl mx-auto">
+
+      <!-- Black CTA card -->
+      <div class="scroll-reveal">
+        <div class="relative p-12 md:p-16 rounded-[3rem] text-center overflow-hidden"
+             style="background-color: #000000;">
+
+          <div class="relative z-10">
+
+            <!-- Badge -->
+            <div class="inline-flex items-center gap-2 mb-6 px-4 py-2 rounded-full"
+                 style="background-color: rgba(255,255,255,0.1); backdrop-filter: blur(4px);">
+              <!-- TrendingUp icon -->
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                   stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                   class="text-white" aria-hidden="true">
+                <polyline points="22 7 13.5 15.5 8.5 10.5 1 18"/>
+                <polyline points="16 7 22 7 22 13"/>
+              </svg>
+              <span class="text-sm text-white">Now accepting clients for June 2026</span>
+            </div>
+
+            <!-- Headline -->
+            <h2 class="text-4xl md:text-6xl font-semibold mb-6 tracking-tight text-white">
+              Stop guessing.<br>Start <span style="color: #9EFF02;">growing</span>.
+            </h2>
+
+            <!-- Subhead -->
+            <p class="text-xl mb-10 max-w-2xl mx-auto" style="color: rgba(255,255,255,0.9);">
+              One call to find out exactly what the system looks like for your business. No pressure. Just straight talk.
+            </p>
+
+            <!-- CTA Buttons -->
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <a href="#contact"
+                 class="btn-primary group px-8 py-4 rounded-full flex items-center gap-2 transition-all shadow-xl hover:shadow-2xl"
+                 style="background-color: #9EFF02; color: #0a0a0a;">
+                Book a Discovery Call
+                <svg class="arrow-icon w-5 h-5" fill="none" stroke="currentColor" stroke-width="2"
+                     stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </a>
+              <a href="#pricing"
+                 class="btn-outline px-8 py-4 bg-transparent border-2 text-white rounded-full transition-all"
+                 style="border-color: #9EFF02; backdrop-filter: blur(4px);">
+                View Packages
+              </a>
+            </div>
+
+            <!-- Trust line -->
+            <div class="mt-10 text-sm" style="color: rgba(255,255,255,0.75);">
+              <p>&#10003; Free discovery call &bull; &#10003; No long contracts &bull; &#10003; Cancel anytime</p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="mt-20 text-center text-sm text-muted-foreground">
+      <p>&copy; 2026 Motion Marketing. All rights reserved.</p>
+    </footer>
+  </section>
 
   <script src="assets/js/main.js"></script>
 </body>

@@ -150,3 +150,14 @@
 .play-btn:hover {
   transform: scale(1.1);
 }
+
+/* Mobile-only line break — hidden on desktop, block on mobile */
+.mobile-break {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .mobile-break {
+    display: block;
+  }
+}

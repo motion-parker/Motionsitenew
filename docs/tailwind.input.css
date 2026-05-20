@@ -152,12 +152,12 @@
 }
 
 /* Mobile-only line break — hidden on desktop, block on mobile */
-.mobile-break {
+.mobile-br {
   display: none;
 }
 
-@media (max-width: 767px) {
-  .mobile-break {
+@media (max-width: 768px) {
+  .mobile-br {
     display: block;
   }
 }

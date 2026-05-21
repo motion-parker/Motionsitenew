@@ -166,37 +166,6 @@
     margin-bottom: 0.75rem;
   }
 
-  /* On mobile: stack hero as a column so the arrow flows after the content */
-  #hero {
-    flex-direction: column;
-    justify-content: center;
-  }
-
-  #hero > div {
-    padding-top: 3.5rem;
-    padding-bottom: 0;
-  }
-
-  /* Tighten hero internal spacing to fit in one viewport */
-  #hero h1 {
-    margin-bottom: 1rem;
-  }
-
-  #hero p.leading-relaxed {
-    margin-bottom: 1.5rem;
-  }
-
-  .hero-content > div:last-child {
-    margin-top: 1rem;
-  }
-
-  /* Arrow becomes a flow element — appears after trust text naturally */
-  .scroll-arrow {
-    position: static !important;
-    left: auto !important;
-    margin-bottom: 1.5rem;
-  }
-
   /* Reduce section vertical padding to ~3/4 on mobile */
   section:not(#hero) {
     padding-top: 5rem;

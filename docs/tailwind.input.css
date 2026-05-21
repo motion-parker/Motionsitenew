@@ -165,4 +165,10 @@
   section:not(#hero) h2 {
     margin-bottom: 0.75rem;
   }
+
+  /* Reduce section vertical padding to ~3/4 on mobile */
+  section:not(#hero) {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
 }

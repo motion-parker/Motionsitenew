@@ -168,7 +168,7 @@
 
   /* Reduce section vertical padding to ~3/4 on mobile */
   section:not(#hero) {
-    padding-top: 6rem;
-    padding-bottom: 6rem;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
   }
 }

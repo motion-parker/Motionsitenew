@@ -160,4 +160,9 @@
   .mobile-br {
     display: block;
   }
+
+  /* Tighten h2 → subhead gap on mobile for all non-hero sections */
+  section:not(#hero) h2 {
+    margin-bottom: 0.75rem;
+  }
 }

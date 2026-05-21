@@ -166,6 +166,12 @@
     margin-bottom: 0.75rem;
   }
 
+  /* Pull hero content up on mobile so the scroll arrow is visible */
+  #hero > div {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
   /* Reduce section vertical padding to ~3/4 on mobile */
   section:not(#hero) {
     padding-top: 5rem;

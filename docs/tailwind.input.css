@@ -151,6 +151,26 @@
   transform: scale(1.1);
 }
 
+/* ─── Neon dot pulse ────────────────────────────────────── */
+@keyframes neon-pulse {
+  0%, 100% { transform: scale(1);   opacity: 1;   }
+  50%       { transform: scale(1.5); opacity: 0.6; }
+}
+
+/* Desktop: pulse on card hover */
+@media (hover: hover) {
+  .scroll-reveal:hover .neon-dot {
+    animation: neon-pulse 1.2s ease-in-out infinite;
+  }
+}
+
+/* Mobile: pulse when card scrolls into view */
+@media (hover: none) {
+  .scroll-reveal.is-visible .neon-dot {
+    animation: neon-pulse 1.2s ease-in-out infinite;
+  }
+}
+
 /* Mobile-only line break — hidden on desktop, block on mobile */
 .mobile-br {
   display: none;

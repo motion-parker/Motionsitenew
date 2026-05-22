@@ -157,14 +157,14 @@
   50%       { opacity: 0.2; }
 }
 
-/* Desktop: pulse on card hover */
+/* Desktop: flash on card hover */
 @media (hover: hover) {
   .scroll-reveal:hover .neon-dot {
     animation: neon-pulse 1.2s ease-in-out infinite;
   }
 }
 
-/* Mobile: pulse when card scrolls into view */
+/* Mobile: flash when card scrolls into view */
 @media (hover: none) {
   .scroll-reveal.is-visible .neon-dot {
     animation: neon-pulse 1.2s ease-in-out infinite;

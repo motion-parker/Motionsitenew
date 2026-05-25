@@ -186,8 +186,8 @@
     margin-bottom: 0.75rem;
   }
 
-  /* Reduce section vertical padding to ~3/4 on mobile */
-  section:not(#hero) {
+  /* Reduce section vertical padding to ~3/4 on mobile (main page only) */
+  body:not(.booking-page) section:not(#hero) {
     padding-top: 5rem;
     padding-bottom: 5rem;
   }

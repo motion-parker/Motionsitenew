@@ -192,15 +192,17 @@
     padding-bottom: 5rem;
   }
 
-  /* Extra top padding on hero so badge pill clears the nav area */
-  #hero .hero-content {
+  /* Extra top padding on hero/booking so badge pill clears the nav area */
+  #hero .hero-content,
+  .booking-hero-content {
     padding-top: 2rem;
   }
 }
 
 @media (min-width: 769px) {
   /* Extra top padding on desktop so badge pill clears the nav */
-  #hero .hero-content {
+  #hero .hero-content,
+  .booking-hero-content {
     padding-top: 5rem;
   }
 }

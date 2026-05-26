@@ -1,3 +1,4 @@
+import { Nav } from "./components/Nav";
 import { Hero } from "./components/Hero";
 import { Features } from "./components/Features";
 import { Showcase } from "./components/Showcase";
@@ -8,6 +9,7 @@ import { FinalCTA } from "./components/FinalCTA";
 export default function App() {
   return (
     <div className="min-h-screen bg-background">
+      <Nav />
       <Hero />
       <Features />
       <Showcase />

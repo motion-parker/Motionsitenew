@@ -191,4 +191,9 @@
     padding-top: 5rem;
     padding-bottom: 5rem;
   }
+
+  /* Extra top padding on hero so badge pill clears the nav area */
+  #hero .hero-content {
+    padding-top: 5rem;
+  }
 }

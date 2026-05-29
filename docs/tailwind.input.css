@@ -203,4 +203,10 @@
   #hero .hero-content {
     padding-top: 5rem;
   }
+
+  /* Consistent 120px section spacing on desktop */
+  body:not(.booking-page) section:not(#hero) {
+    padding-top: 120px;
+    padding-bottom: 120px;
+  }
 }

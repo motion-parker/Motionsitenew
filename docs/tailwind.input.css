@@ -72,6 +72,41 @@
   }
 }
 
+/* ─── Neon circling pill border ────────────────────────── */
+.neon-pill-wrap {
+  display: inline-flex;
+  position: relative;
+  border-radius: 9999px;
+  padding: 1.5px;
+  overflow: hidden;
+}
+
+.neon-pill-wrap::before {
+  content: '';
+  position: absolute;
+  inset: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(from 0deg, transparent 0deg, #9EFF02 60deg, transparent 120deg);
+  animation: neon-spin 2.5s linear infinite;
+  border-radius: 0;
+}
+
+@keyframes neon-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+.neon-pill-inner {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 16px;
+  border-radius: 9999px;
+  background: #f1f5e8;
+  position: relative;
+  z-index: 1;
+}
+
 /* ─── Hero: load-time fade-in ──────────────────────────── */
 @keyframes fade-in-up {
   from { opacity: 0; transform: translateY(20px); }

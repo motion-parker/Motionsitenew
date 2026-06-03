@@ -30,6 +30,36 @@
     #site-logo { height: 64px; }
     @media(min-width: 768px) { #site-logo { height: 72px; } }
     :root { --background: #f1f5e8; --card: #f1f5e8; }
+
+    /* Scrolling client logo marquee */
+    .logo-marquee {
+      overflow: hidden;
+      -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 12%, #000 88%, transparent 100%);
+              mask-image: linear-gradient(90deg, transparent 0, #000 12%, #000 88%, transparent 100%);
+    }
+    .logo-track {
+      display: flex;
+      width: max-content;
+      animation: logo-scroll 35s linear infinite;
+    }
+    .logo-marquee:hover .logo-track { animation-play-state: paused; }
+    .logo-item {
+      flex: 0 0 auto;
+      padding: 0 2.75rem;
+      font-size: 1.5rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      white-space: nowrap;
+      color: var(--muted-foreground);
+      opacity: 0.65;
+    }
+    @keyframes logo-scroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .logo-track { animation: none; }
+    }
   </style>
 
   <!-- JSON-LD LocalBusiness Schema -->
@@ -140,6 +170,35 @@
   </section>
 
   <main>
+
+    <!-- ═══════════════════════════════════════════════════
+         CLIENT LOGO MARQUEE — single scrolling line
+         NOTE: placeholder text wordmarks — swap for <img> logos
+    ═══════════════════════════════════════════════════ -->
+    <section id="clients" class="border-y border-border/40" style="padding-top: 2.75rem; padding-bottom: 2.75rem; background: linear-gradient(135deg, rgba(255,255,255,0.55) 0%, rgba(241,245,232,0.4) 45%, rgba(158,255,2,0.06) 100%); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); box-shadow: 0 1px 0 rgba(255,255,255,0.7) inset, 0 -1px 0 rgba(158,255,2,0.1) inset;">
+      <div class="logo-marquee">
+        <div class="logo-track" aria-hidden="false">
+          <!-- Set 1 -->
+          <span class="logo-item">Summit HVAC</span>
+          <span class="logo-item">Apex Roofing</span>
+          <span class="logo-item">Pure Plumbing</span>
+          <span class="logo-item">Bright Dental</span>
+          <span class="logo-item">Northgate Auto</span>
+          <span class="logo-item">Evergreen Lawn</span>
+          <span class="logo-item">Riverstone Realty</span>
+          <span class="logo-item">Cardinal Fitness</span>
+          <!-- Set 2 (duplicate for seamless loop) -->
+          <span class="logo-item" aria-hidden="true">Summit HVAC</span>
+          <span class="logo-item" aria-hidden="true">Apex Roofing</span>
+          <span class="logo-item" aria-hidden="true">Pure Plumbing</span>
+          <span class="logo-item" aria-hidden="true">Bright Dental</span>
+          <span class="logo-item" aria-hidden="true">Northgate Auto</span>
+          <span class="logo-item" aria-hidden="true">Evergreen Lawn</span>
+          <span class="logo-item" aria-hidden="true">Riverstone Realty</span>
+          <span class="logo-item" aria-hidden="true">Cardinal Fitness</span>
+        </div>
+      </div>
+    </section>
 
     <!-- ═══════════════════════════════════════════════════
          SERVICES — system breakdown cards
@@ -458,15 +517,15 @@
         <!-- Stats row -->
         <div class="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8 text-center scroll-reveal" style="transition-delay: 0.4s;">
           <div>
-            <div class="text-5xl font-semibold mb-2">100M+</div>
+            <div class="text-5xl font-semibold mb-2 stat-number" data-target="100" data-prefix="" data-suffix="M+">0M+</div>
             <div class="text-muted-foreground">Digital views generated</div>
           </div>
           <div>
-            <div class="text-5xl font-semibold mb-2">$50K+</div>
+            <div class="text-5xl font-semibold mb-2 stat-number" data-target="50" data-prefix="$" data-suffix="K+">$0K+</div>
             <div class="text-muted-foreground">Ad spend managed</div>
           </div>
           <div>
-            <div class="text-5xl font-semibold mb-2">250+</div>
+            <div class="text-5xl font-semibold mb-2 stat-number" data-target="250" data-prefix="" data-suffix="+">0+</div>
             <div class="text-muted-foreground">Projects delivered</div>
           </div>
         </div>
@@ -693,6 +752,11 @@
     <!-- Footer -->
     <footer class="mt-20 text-center text-sm text-muted-foreground">
       <p>&copy; 2026 Motion Marketing. All rights reserved.</p>
+      <p class="mt-2">
+        <a href="privacy.html" class="hover:text-foreground transition-colors underline">Privacy Policy</a>
+        <span class="mx-2">&middot;</span>
+        <a href="terms.html" class="hover:text-foreground transition-colors underline">Terms of Service</a>
+      </p>
     </footer>
   </section>
 

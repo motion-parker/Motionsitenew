@@ -46,12 +46,14 @@
     .logo-item {
       flex: 0 0 auto;
       padding: 0 2.75rem;
-      font-size: 1.5rem;
-      font-weight: 600;
-      letter-spacing: -0.01em;
-      white-space: nowrap;
-      color: var(--muted-foreground);
-      opacity: 0.65;
+      display: flex;
+      align-items: center;
+    }
+    .logo-item img {
+      height: 42px;
+      width: auto;
+      display: block;
+      opacity: 0.85;
     }
     @keyframes logo-scroll {
       from { transform: translateX(0); }
@@ -179,23 +181,17 @@
       <div class="logo-marquee">
         <div class="logo-track" aria-hidden="false">
           <!-- Set 1 -->
-          <span class="logo-item">Summit HVAC</span>
-          <span class="logo-item">Apex Roofing</span>
-          <span class="logo-item">Pure Plumbing</span>
-          <span class="logo-item">Bright Dental</span>
-          <span class="logo-item">Northgate Auto</span>
-          <span class="logo-item">Evergreen Lawn</span>
-          <span class="logo-item">Riverstone Realty</span>
-          <span class="logo-item">Cardinal Fitness</span>
+          <span class="logo-item"><img src="assets/images/logos/ozark-concrete.png" alt="Ozark Concrete and Materials" loading="lazy"></span>
+          <span class="logo-item"><img src="assets/images/logos/mac-co.png" alt="MAC CO Heating &amp; Cooling" loading="lazy"></span>
+          <span class="logo-item"><img src="assets/images/logos/four-state-floors.png" alt="Four State Custom Floors" loading="lazy"></span>
+          <span class="logo-item"><img src="assets/images/logos/polished.png" alt="Polished From Head to Toe" loading="lazy"></span>
+          <span class="logo-item"><img src="assets/images/logos/camelbak.png" alt="CamelBak" loading="lazy"></span>
           <!-- Set 2 (duplicate for seamless loop) -->
-          <span class="logo-item" aria-hidden="true">Summit HVAC</span>
-          <span class="logo-item" aria-hidden="true">Apex Roofing</span>
-          <span class="logo-item" aria-hidden="true">Pure Plumbing</span>
-          <span class="logo-item" aria-hidden="true">Bright Dental</span>
-          <span class="logo-item" aria-hidden="true">Northgate Auto</span>
-          <span class="logo-item" aria-hidden="true">Evergreen Lawn</span>
-          <span class="logo-item" aria-hidden="true">Riverstone Realty</span>
-          <span class="logo-item" aria-hidden="true">Cardinal Fitness</span>
+          <span class="logo-item" aria-hidden="true"><img src="assets/images/logos/ozark-concrete.png" alt="" loading="lazy"></span>
+          <span class="logo-item" aria-hidden="true"><img src="assets/images/logos/mac-co.png" alt="" loading="lazy"></span>
+          <span class="logo-item" aria-hidden="true"><img src="assets/images/logos/four-state-floors.png" alt="" loading="lazy"></span>
+          <span class="logo-item" aria-hidden="true"><img src="assets/images/logos/polished.png" alt="" loading="lazy"></span>
+          <span class="logo-item" aria-hidden="true"><img src="assets/images/logos/camelbak.png" alt="" loading="lazy"></span>
         </div>
       </div>
     </section>

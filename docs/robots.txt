@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://motion-parker.github.io/Motionsitenew/sitemap.xml

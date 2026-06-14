@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://motion-parker.github.io/Motionsitenew/sitemap.xml
+Sitemap: https://www.motionmarketing.agency/sitemap.xml

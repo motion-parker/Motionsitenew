@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://motionmarketing.agency/sitemap.xml
+Sitemap: https://www.motionmarketing.agency/sitemap.xml

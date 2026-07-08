@@ -54,4 +54,39 @@
   document.querySelectorAll('.scroll-reveal, .scroll-reveal-scale').forEach(function (el) {
     observer.observe(el);
   });
+
+  // ── Cycling role titles (team section) ──
+  // Each .role-cycle element rotates through its pipe-separated data-roles
+  // with a short fade. Honors prefers-reduced-motion (instant swap, no fade).
+  var reduceMotion = window.matchMedia &&
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  document.querySelectorAll('.role-cycle').forEach(function (el) {
+    var roles = (el.getAttribute('data-roles') || '')
+      .split('|')
+      .map(function (s) { return s.trim(); })
+      .filter(Boolean);
+    if (roles.length < 2) return;
+
+    var i = 0;
+    var fade = 400;   // ms fade duration
+    var hold = 2200;  // ms each role stays fully visible
+
+    if (!reduceMotion) el.style.transition = 'opacity ' + fade + 'ms ease';
+
+    setInterval(function () {
+      var next = (i + 1) % roles.length;
+      if (reduceMotion) {
+        i = next;
+        el.textContent = roles[i];
+        return;
+      }
+      el.style.opacity = '0';
+      setTimeout(function () {
+        i = next;
+        el.textContent = roles[i];
+        el.style.opacity = '1';
+      }, fade);
+    }, hold + fade);
+  });
 })();

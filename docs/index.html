@@ -47,6 +47,24 @@
     }
     :root { --background: #f1f5e8; --card: #f1f5e8; }
 
+    /* Team card accents */
+    .role-accent {
+      width: 28px;
+      height: 3px;
+      margin: 0.65rem auto 0;
+      border-radius: 9999px;
+      background-color: #82ee63;
+      box-shadow: 0 0 8px rgba(130, 238, 99, 0.6);
+    }
+    .team-photo {
+      transition: border-color 0.35s ease, box-shadow 0.35s ease, transform 0.35s ease;
+    }
+    .team-card:hover .team-photo {
+      border-color: #82ee63;
+      box-shadow: 0 14px 36px rgba(130, 238, 99, 0.28);
+      transform: translateY(-4px);
+    }
+
     /* Scrolling client logo marquee */
     .logo-marquee {
       overflow: hidden;
@@ -694,8 +712,8 @@
         <div class="flex flex-col md:flex-row gap-8 justify-center items-center max-w-4xl mx-auto">
 
           <!-- Parker Harris -->
-          <div class="flex flex-col items-center scroll-reveal" style="transition-delay: 0s;">
-            <div class="w-72 h-72 rounded-3xl overflow-hidden mb-6 border-2 border-border">
+          <div class="team-card flex flex-col items-center scroll-reveal" style="transition-delay: 0s;">
+            <div class="team-photo w-72 h-72 rounded-3xl overflow-hidden mb-6 border-2 border-border">
               <img src="assets/images/parkerheadshot2.PNG"
                    alt="Parker Harris, Founder and Co-Owner of Motion Marketing"
                    class="w-full h-full object-cover">
@@ -703,12 +721,13 @@
             <div class="text-center">
               <div class="font-semibold text-2xl mb-2">Parker Harris</div>
               <div class="text-muted-foreground text-lg role-cycle" data-roles="Lead Strategist|SEO Specialist|Founder">Lead Strategist</div>
+              <div class="role-accent" aria-hidden="true"></div>
             </div>
           </div>
 
           <!-- Taylor Jackson -->
-          <div class="flex flex-col items-center scroll-reveal" style="transition-delay: 0.1s;">
-            <div class="w-72 h-72 rounded-3xl overflow-hidden mb-6 border-2 border-border">
+          <div class="team-card flex flex-col items-center scroll-reveal" style="transition-delay: 0.1s;">
+            <div class="team-photo w-72 h-72 rounded-3xl overflow-hidden mb-6 border-2 border-border">
               <img src="assets/images/taylor-jackson.png"
                    alt="Taylor Jackson, Co-Owner of Motion Marketing"
                    class="w-full h-full object-cover">
@@ -716,6 +735,7 @@
             <div class="text-center">
               <div class="font-semibold text-2xl mb-2">Taylor Jackson</div>
               <div class="text-muted-foreground text-lg role-cycle" data-roles="Creative Director|Meta Ads Specialist|Co-Owner">Creative Director</div>
+              <div class="role-accent" aria-hidden="true"></div>
             </div>
           </div>
 

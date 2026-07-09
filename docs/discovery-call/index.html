@@ -32,11 +32,12 @@
       -webkit-background-clip: text;
       background-clip: text;
       -webkit-text-fill-color: transparent;
-      animation: shine-sweep 4s ease-in-out infinite;
+      animation: shine-sweep 3.5s ease-in-out infinite;
     }
     @keyframes shine-sweep {
-      0%, 55%, 100% { background-position: 200% center; }
-      30%            { background-position: -50% center; }
+      0%            { background-position: 200% center; }
+      14%           { background-position: -50% center; }
+      14.01%, 100%  { background-position: 200% center; }
     }
   </style>
 </head>

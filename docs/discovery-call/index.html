@@ -24,6 +24,20 @@
     #booking-heading { padding-top: 132px; }
     @media(min-width:768px) { #booking-heading { padding-top: 120px; } }
     :root { --background: #f1f5e8; --card: #f1f5e8; }
+    .growth-shine {
+      display: inline-block;
+      background: linear-gradient(110deg, #82ee63 30%, #82ee63 40%, #d4ffbc 48%, #edffd8 50%, #d4ffbc 52%, #82ee63 60%, #82ee63 70%);
+      background-size: 300% 100%;
+      background-position: 200% center;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: shine-sweep 4s ease-in-out infinite;
+    }
+    @keyframes shine-sweep {
+      0%, 55%, 100% { background-position: 200% center; }
+      30%            { background-position: -50% center; }
+    }
   </style>
 </head>
 
@@ -54,7 +68,7 @@
       <!-- Heading -->
       <h1 class="text-6xl md:text-7xl font-semibold tracking-tight mb-8 leading-none pb-2
                   bg-gradient-to-br from-foreground to-foreground/60 bg-clip-text text-transparent">
-        Let's talk <span style="color: #82ee63;"><em>growth</em></span>.
+        Let's talk <span class="growth-shine"><em>growth</em></span>.
       </h1>
 
       <!-- Subheading -->

@@ -72,6 +72,14 @@
       #services .grid > div > .flex { margin-bottom: 0.55rem; }
       #services .grid > div > p { margin-bottom: 0.85rem; line-height: 1.5; }
     }
+    /* Roomier service cards on desktop — bigger padding and type */
+    @media (min-width: 768px) {
+      #services .grid { gap: 1.75rem; }
+      #services .grid > div { padding: 2.5rem; }
+      #services .grid > div .font-semibold.text-lg { font-size: 1.3rem; }
+      #services .grid > div > p { font-size: 1rem; line-height: 1.7; }
+      #services .grid > div > .text-sm.font-medium { font-size: 0.95rem; }
+    }
 
     /* Scrolling client logo marquee */
     .logo-marquee {

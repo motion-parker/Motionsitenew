@@ -65,6 +65,21 @@
       transform: translateY(-4px);
     }
 
+    /* Service cards — staggered reveal, green glow on hover.
+       Delays are per-property so the reveal stays staggered while
+       hover responds instantly. */
+    #services .grid > div {
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out,
+                  border-color 0.35s ease, box-shadow 0.35s ease;
+    }
+    #services .grid > div:nth-child(3n+1) { transition-delay: 0s,   0s,   0s, 0s; }
+    #services .grid > div:nth-child(3n+2) { transition-delay: 0.1s, 0.1s, 0s, 0s; }
+    #services .grid > div:nth-child(3n+3) { transition-delay: 0.2s, 0.2s, 0s, 0s; }
+    #services .grid > div:hover {
+      border-color: #82ee63;
+      box-shadow: 0 14px 36px rgba(130, 238, 99, 0.28);
+    }
+
     /* Compact service cards on mobile — shorter, more horizontal */
     @media (max-width: 767px) {
       #services .grid { gap: 0.75rem; }
@@ -287,7 +302,7 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
           <!-- 01 Meta Ads -->
-          <div class="p-8 rounded-3xl bg-card border border-border scroll-reveal" style="transition-delay: 0s;">
+          <div class="p-8 rounded-3xl bg-card border border-border scroll-reveal">
             <div class="flex items-center gap-3 mb-4">
               <div class="neon-dot w-3 h-3 rounded-full" style="background-color: #82ee63;"></div>
               <div class="font-semibold text-lg text-foreground">Meta Ads</div>
@@ -299,7 +314,7 @@
           </div>
 
           <!-- 02 Landing Pages & Funnels -->
-          <div class="p-8 rounded-3xl bg-card border border-border scroll-reveal" style="transition-delay: 0.1s;">
+          <div class="p-8 rounded-3xl bg-card border border-border scroll-reveal">
             <div class="flex items-center gap-3 mb-4">
               <div class="neon-dot w-3 h-3 rounded-full" style="background-color: #82ee63;"></div>
               <div class="font-semibold text-lg text-foreground">Landing Pages &amp; Funnels</div>
@@ -311,7 +326,7 @@
           </div>
 
           <!-- 03 AI Automations -->
-          <div class="p-8 rounded-3xl bg-card border border-border scroll-reveal" style="transition-delay: 0.2s;">
+          <div class="p-8 rounded-3xl bg-card border border-border scroll-reveal">
             <div class="flex items-center gap-3 mb-4">
               <div class="neon-dot w-3 h-3 rounded-full" style="background-color: #82ee63;"></div>
               <div class="font-semibold text-lg text-foreground">Automations</div>
@@ -323,7 +338,7 @@
           </div>
 
           <!-- 04 Email / SMS -->
-          <div class="p-8 rounded-3xl bg-card border border-border scroll-reveal" style="transition-delay: 0s;">
+          <div class="p-8 rounded-3xl bg-card border border-border scroll-reveal">
             <div class="flex items-center gap-3 mb-4">
               <div class="neon-dot w-3 h-3 rounded-full" style="background-color: #82ee63;"></div>
               <div class="font-semibold text-lg text-foreground">Email / SMS</div>
@@ -335,7 +350,7 @@
           </div>
 
           <!-- 05 CRM & Software -->
-          <div class="p-8 rounded-3xl bg-card border border-border scroll-reveal" style="transition-delay: 0.1s;">
+          <div class="p-8 rounded-3xl bg-card border border-border scroll-reveal">
             <div class="flex items-center gap-3 mb-4">
               <div class="neon-dot w-3 h-3 rounded-full" style="background-color: #82ee63;"></div>
               <div class="font-semibold text-lg text-foreground">CRM &amp; Software</div>
@@ -347,7 +362,7 @@
           </div>
 
           <!-- 06 AI Assistant -->
-          <div class="p-8 rounded-3xl bg-card border border-border scroll-reveal" style="transition-delay: 0.2s;">
+          <div class="p-8 rounded-3xl bg-card border border-border scroll-reveal">
             <div class="flex items-center gap-3 mb-4">
               <div class="neon-dot w-3 h-3 rounded-full" style="background-color: #82ee63;"></div>
               <div class="font-semibold text-lg text-foreground">AI Assistant</div>

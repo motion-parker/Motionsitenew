@@ -165,14 +165,16 @@
 
       <!-- Category + read time -->
       <div class="flex items-center gap-3 mb-6">
-        <span class="cat-lime text-xs font-medium px-3 py-1 rounded-full">Paid Ads</span>
+        <div class="neon-pill-wrap">
+          <div class="neon-pill-inner text-xs font-medium text-foreground">Paid Ads</div>
+        </div>
         <span class="text-xs text-muted-foreground">5 min read</span>
         <span class="text-xs text-muted-foreground">Oct 1, 2026</span>
       </div>
 
       <!-- Title -->
       <h1 class="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight mb-8 leading-tight">
-        <span class="bg-gradient-to-br from-foreground to-foreground/70 bg-clip-text text-transparent">
+        <span class="bg-gradient-to-br from-foreground to-foreground/90 bg-clip-text text-transparent">
           Why Your Meta Ads Are Getting Clicks But <em style="color: #82ee63;">Zero</em> Calls
         </span>
       </h1>
@@ -280,49 +282,10 @@
     </div>
   </article>
 
-  <!-- ── CTA ── -->
-  <section class="px-6 pb-24">
-    <div class="max-w-5xl mx-auto">
-      <div class="relative p-12 md:p-16 rounded-[3rem] text-center overflow-hidden"
-           style="background: linear-gradient(145deg, #2c2c2e 0%, #161617 100%);">
-        <div class="relative z-10">
-          <div class="inline-flex items-center gap-2 mb-6 px-4 py-2 rounded-full"
-               style="background-color: rgba(255,255,255,0.1); backdrop-filter: blur(4px);">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                 class="text-white" aria-hidden="true">
-              <polyline points="22 7 13.5 15.5 8.5 10.5 1 18"/>
-              <polyline points="16 7 22 7 22 13"/>
-            </svg>
-            <span class="text-sm text-white">Limited spots for Q4</span>
-          </div>
-          <h2 class="text-3xl md:text-5xl font-semibold mb-6 tracking-tight text-white">
-            Ready to stop guessing?<br>Let's build the <em style="color: #82ee63;">system.</em>
-          </h2>
-          <p class="text-lg mb-10 max-w-xl mx-auto" style="color: rgba(255,255,255,0.85);">
-            One call. We map out exactly what needs to change — the ad, the page, the follow-up. No pressure.
-          </p>
-          <a href="../../discovery-call/"
-             class="inline-flex items-center gap-2 px-8 py-4 rounded-full font-medium text-sm transition-all shadow-xl hover:shadow-2xl"
-             style="background-color: #82ee63; color: #0a0a0a;">
-            Book a Discovery Call
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M5 12h14M12 5l7 7-7 7"/>
-            </svg>
-          </a>
-          <div class="mt-8 text-sm" style="color: rgba(255,255,255,0.6);">
-            &#10003; Free &bull; &#10003; No commitment &bull; &#10003; Straight talk
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- ── Related posts ── -->
   <section class="px-6 pb-16">
     <div class="max-w-5xl mx-auto">
-      <h2 class="text-2xl font-semibold mb-8 text-foreground">More from the blog</h2>
+      <h2 class="text-2xl font-semibold mb-8 text-foreground">Other posts you might like</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
         <a href="../" class="related-card block rounded-3xl overflow-hidden border border-border bg-card">
@@ -332,8 +295,8 @@
             <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
             <span class="cat-lime absolute top-4 right-4 text-xs font-medium px-3 py-1 rounded-full">SEO / AEO</span>
           </div>
-          <div class="p-7">
-            <div class="font-semibold text-base mb-4 text-foreground leading-snug">
+          <div class="card-content p-8">
+            <div class="card-title font-semibold text-lg text-foreground mb-4 leading-snug">
               The AEO Guide Every Local Business Should Read Before Their Competitor Does
             </div>
             <div class="flex items-center justify-between">
@@ -355,8 +318,8 @@
             <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
             <span class="cat-dark absolute top-4 right-4 text-xs font-medium px-3 py-1 rounded-full">Case Study</span>
           </div>
-          <div class="p-7">
-            <div class="font-semibold text-base mb-4 text-foreground leading-snug">
+          <div class="card-content p-8">
+            <div class="card-title font-semibold text-lg text-foreground mb-4 leading-snug">
               How We Turned $5K in Ad Spend Into 47 Booked Calls in 30 Days
             </div>
             <div class="flex items-center justify-between">

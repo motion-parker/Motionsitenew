@@ -109,15 +109,27 @@
       border: 1px solid rgba(130, 238, 99, 0.35);
     }
 
+    /* Thumbnail */
+    .thumb-dark { background: linear-gradient(135deg, #161617 0%, #2c2c2e 100%); }
+    .thumb-img { transition: transform 0.5s ease; }
+
+    /* Cat pills */
+    .cat-dark {
+      background: rgba(255, 255, 255, 0.15);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+    }
+
     /* Related card hover */
     .related-card {
-      transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+      transition: border-color 0.35s ease, box-shadow 0.35s ease, transform 0.35s ease;
     }
     .related-card:hover {
       border-color: #82ee63;
-      box-shadow: 0 14px 36px rgba(130, 238, 99, 0.22);
+      box-shadow: 0 14px 36px rgba(130, 238, 99, 0.28);
       transform: translateY(-4px);
     }
+    .related-card:hover .thumb-img { transform: scale(1.04); }
   </style>
 </head>
 
@@ -175,19 +187,6 @@
           <div class="font-medium text-foreground">Parker Harris</div>
           <div class="text-sm text-muted-foreground">Founder &amp; Co-Owner, Motion Marketing</div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── Hero image ── -->
-  <section class="px-6 mb-16">
-    <div class="max-w-5xl mx-auto">
-      <div class="rounded-3xl overflow-hidden border border-border shadow-xl aspect-video relative"
-           style="background: linear-gradient(135deg, #161617 0%, #2c2c2e 100%);">
-        <img src="../../assets/images/meta-dashboard.png"
-             alt="Meta Ads performance dashboard"
-             class="w-full h-full object-cover opacity-80">
-        <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
       </div>
     </div>
   </section>
@@ -321,43 +320,54 @@
   </section>
 
   <!-- ── Related posts ── -->
-  <section class="px-6 pb-32">
+  <section class="px-6 pb-16">
     <div class="max-w-5xl mx-auto">
       <h2 class="text-2xl font-semibold mb-8 text-foreground">More from the blog</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
-        <a href="../" class="related-card block rounded-3xl overflow-hidden border border-border bg-card group">
-          <div class="aspect-[16/9] relative overflow-hidden flex items-center justify-center"
-               style="background: linear-gradient(135deg, #3a5c00 0%, #82ee63 100%);">
-            <span class="text-6xl font-bold" style="color: rgba(0,0,0,0.12);">AEO</span>
+        <a href="../" class="related-card block rounded-3xl overflow-hidden border border-border bg-card">
+          <div class="aspect-[16/9] thumb-dark relative overflow-hidden">
+            <img src="../../assets/images/meta-dashboard.png" alt=""
+                 class="thumb-img w-full h-full object-cover opacity-70 absolute inset-0">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+            <span class="cat-lime absolute top-4 right-4 text-xs font-medium px-3 py-1 rounded-full">SEO / AEO</span>
           </div>
           <div class="p-7">
-            <div class="flex items-center gap-3 mb-3">
-              <span class="cat-lime text-xs font-medium px-3 py-1 rounded-full">SEO / AEO</span>
-              <span class="text-xs text-muted-foreground">4 min read</span>
-            </div>
-            <h3 class="font-semibold text-base mb-2 text-foreground leading-snug">
+            <div class="font-semibold text-base mb-4 text-foreground leading-snug">
               The AEO Guide Every Local Business Should Read Before Their Competitor Does
-            </h3>
-            <span class="text-sm text-muted-foreground">Taylor Jackson · Sep 22, 2026</span>
+            </div>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-2.5">
+                <img src="../../assets/images/taylor-jackson.png" alt="Taylor Jackson"
+                     class="w-7 h-7 rounded-full object-cover border border-border"
+                     style="object-position: center top;">
+                <span class="text-sm font-medium text-foreground">Taylor Jackson</span>
+              </div>
+              <span class="text-xs text-muted-foreground">Sep 22 &middot; 4 min</span>
+            </div>
           </div>
         </a>
 
-        <a href="../" class="related-card block rounded-3xl overflow-hidden border border-border bg-card group">
-          <div class="aspect-[16/9] relative overflow-hidden flex items-center justify-center"
-               style="background: linear-gradient(135deg, #161617 0%, #2c2c2e 100%);">
-            <span class="text-5xl font-bold" style="color: rgba(130,238,99,0.25);">$5K</span>
+        <a href="../" class="related-card block rounded-3xl overflow-hidden border border-border bg-card">
+          <div class="aspect-[16/9] thumb-dark relative overflow-hidden">
+            <img src="../../assets/images/meta-dashboard.png" alt=""
+                 class="thumb-img w-full h-full object-cover opacity-70 absolute inset-0">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+            <span class="cat-dark absolute top-4 right-4 text-xs font-medium px-3 py-1 rounded-full">Case Study</span>
           </div>
           <div class="p-7">
-            <div class="flex items-center gap-3 mb-3">
-              <span class="text-xs font-medium px-3 py-1 rounded-full"
-                    style="background: rgba(3,2,19,0.07); color: #030213; border: 1px solid rgba(3,2,19,0.12);">Case Study</span>
-              <span class="text-xs text-muted-foreground">6 min read</span>
-            </div>
-            <h3 class="font-semibold text-base mb-2 text-foreground leading-snug">
+            <div class="font-semibold text-base mb-4 text-foreground leading-snug">
               How We Turned $5K in Ad Spend Into 47 Booked Calls in 30 Days
-            </h3>
-            <span class="text-sm text-muted-foreground">Parker Harris · Sep 15, 2026</span>
+            </div>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-2.5">
+                <img src="../../assets/images/parker-harris.png" alt="Parker Harris"
+                     class="w-7 h-7 rounded-full object-cover border border-border"
+                     style="object-position: center top;">
+                <span class="text-sm font-medium text-foreground">Parker Harris</span>
+              </div>
+              <span class="text-xs text-muted-foreground">Sep 15 &middot; 6 min</span>
+            </div>
           </div>
         </a>
 
@@ -366,7 +376,7 @@
   </section>
 
   <!-- Footer -->
-  <footer class="pb-10 text-center text-sm text-muted-foreground">
+  <footer class="pt-24 pb-10 text-center text-sm text-muted-foreground">
     <p>&copy; 2026 Motion Marketing. All rights reserved.</p>
     <p class="mt-2">
       <a href="../../privacy-policy/" class="hover:text-foreground transition-colors underline">Privacy Policy</a>

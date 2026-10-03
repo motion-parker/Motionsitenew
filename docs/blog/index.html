@@ -61,6 +61,15 @@
       #blog-grid > a > .card-content > p { font-size: 1rem; line-height: 1.7; }
     }
 
+    /* Thumbnail zoom on hover */
+    #blog-grid > a:hover .thumb-img {
+      transform: scale(1.04);
+    }
+    .thumb-img {
+      transition: transform 0.5s ease;
+    }
+    .thumb-dark { background: linear-gradient(135deg, #161617 0%, #2c2c2e 100%); }
+
     /* Category pill */
     .cat-lime {
       background: rgba(130, 238, 99, 0.18);
@@ -116,8 +125,12 @@
         <!-- Post 1 -->
         <a href="why-meta-ads-get-clicks-but-no-calls/"
            class="rounded-3xl overflow-hidden border border-border bg-card scroll-reveal block">
-          <div class="px-8 pt-8 pb-0">
-            <span class="cat-lime text-xs font-medium px-3 py-1 rounded-full">Paid Ads</span>
+          <div class="aspect-[16/9] thumb-dark relative overflow-hidden">
+            <img src="../assets/images/meta-dashboard.png"
+                 alt=""
+                 class="thumb-img w-full h-full object-cover opacity-70 absolute inset-0">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+            <span class="cat-lime absolute top-4 right-4 text-xs font-medium px-3 py-1 rounded-full">Paid Ads</span>
           </div>
           <div class="card-content p-8">
             <div class="card-title font-semibold text-lg text-foreground mb-4 leading-snug">
@@ -141,8 +154,12 @@
         <!-- Post 2 -->
         <a href="why-meta-ads-get-clicks-but-no-calls/"
            class="rounded-3xl overflow-hidden border border-border bg-card scroll-reveal block">
-          <div class="px-8 pt-8 pb-0">
-            <span class="cat-lime text-xs font-medium px-3 py-1 rounded-full">SEO / AEO</span>
+          <div class="aspect-[16/9] thumb-dark relative overflow-hidden">
+            <img src="../assets/images/meta-dashboard.png"
+                 alt=""
+                 class="thumb-img w-full h-full object-cover opacity-70 absolute inset-0">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+            <span class="cat-lime absolute top-4 right-4 text-xs font-medium px-3 py-1 rounded-full">SEO / AEO</span>
           </div>
           <div class="card-content p-8">
             <div class="card-title font-semibold text-lg text-foreground mb-4 leading-snug">
@@ -166,8 +183,12 @@
         <!-- Post 3 -->
         <a href="why-meta-ads-get-clicks-but-no-calls/"
            class="rounded-3xl overflow-hidden border border-border bg-card scroll-reveal block">
-          <div class="px-8 pt-8 pb-0">
-            <span class="cat-dark text-xs font-medium px-3 py-1 rounded-full">Case Study</span>
+          <div class="aspect-[16/9] thumb-dark relative overflow-hidden">
+            <img src="../assets/images/meta-dashboard.png"
+                 alt=""
+                 class="thumb-img w-full h-full object-cover opacity-70 absolute inset-0">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+            <span class="cat-dark absolute top-4 right-4 text-xs font-medium px-3 py-1 rounded-full">Case Study</span>
           </div>
           <div class="card-content p-8">
             <div class="card-title font-semibold text-lg text-foreground mb-4 leading-snug">
@@ -191,8 +212,12 @@
         <!-- Post 4 -->
         <a href="why-meta-ads-get-clicks-but-no-calls/"
            class="rounded-3xl overflow-hidden border border-border bg-card scroll-reveal block">
-          <div class="px-8 pt-8 pb-0">
-            <span class="cat-lime text-xs font-medium px-3 py-1 rounded-full">Website</span>
+          <div class="aspect-[16/9] thumb-dark relative overflow-hidden">
+            <img src="../assets/images/meta-dashboard.png"
+                 alt=""
+                 class="thumb-img w-full h-full object-cover opacity-70 absolute inset-0">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+            <span class="cat-lime absolute top-4 right-4 text-xs font-medium px-3 py-1 rounded-full">Website</span>
           </div>
           <div class="card-content p-8">
             <div class="card-title font-semibold text-lg text-foreground mb-4 leading-snug">

@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Blog — Motion Marketing</title>
   <meta name="robots" content="index, follow">
-  <meta name="description" content="The strategies, systems, and hard-won lessons behind Motion Marketing — written down so you can use them.">
+  <meta name="description" content="The strategies, systems, and hard-won lessons behind Motion Marketing. Written down so you can use them.">
 
   <!-- Favicon -->
   <link rel="icon" href="../favicon.ico" sizes="any">
@@ -26,28 +26,47 @@
     #site-logo { height: 64px; }
     @media(min-width: 768px) { #site-logo { height: 72px; } }
 
-    h1 em, h2 em, h3 em {
+    h1 em, h2 em {
       font-family: 'Playfair Display', Georgia, serif;
       font-style: italic;
       font-weight: 600;
     }
 
-    /* Card hover — matches service cards on main site */
-    .blog-card {
-      transition: border-color 0.35s ease, box-shadow 0.35s ease, transform 0.35s ease;
+    /* Blog cards — exact same rules as service cards */
+    #blog-grid > a {
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out,
+                  border-color 0.35s ease, box-shadow 0.35s ease;
     }
-    .blog-card:hover {
+    #blog-grid > a:nth-child(3n+1) { transition-delay: 0s,   0s,   0s, 0s; }
+    #blog-grid > a:nth-child(3n+2) { transition-delay: 0.1s, 0.1s, 0s, 0s; }
+    #blog-grid > a:nth-child(3n+3) { transition-delay: 0.2s, 0.2s, 0s, 0s; }
+    #blog-grid > a:hover {
       border-color: #82ee63;
       box-shadow: 0 14px 36px rgba(130, 238, 99, 0.28);
       transform: translateY(-4px);
+      transition-delay: 0s;
+      transition-duration: 0.35s;
     }
 
-    /* Thumbnail zoom */
+    /* Thumbnail zoom on hover */
+    #blog-grid > a:hover .thumb-img {
+      transform: scale(1.04);
+    }
     .thumb-img {
       transition: transform 0.5s ease;
     }
-    .blog-card:hover .thumb-img {
-      transform: scale(1.04);
+
+    /* Mobile: compact like service cards */
+    @media (max-width: 767px) {
+      #blog-grid { gap: 0.75rem; }
+      #blog-grid > a > .card-content { padding: 1.25rem 1.4rem; }
+    }
+    /* Desktop: roomier like service cards */
+    @media (min-width: 768px) {
+      #blog-grid { gap: 1.75rem; }
+      #blog-grid > a > .card-content { padding: 2.5rem; }
+      #blog-grid > a > .card-content .card-title { font-size: 1.3rem; }
+      #blog-grid > a > .card-content > p { font-size: 1rem; line-height: 1.7; }
     }
 
     /* Gradient thumbnails */
@@ -65,16 +84,6 @@
       background: rgba(3, 2, 19, 0.07);
       color: #030213;
       border: 1px solid rgba(3, 2, 19, 0.12);
-    }
-
-    /* Neon dot — matches service cards */
-    .neon-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 9999px;
-      background-color: #82ee63;
-      box-shadow: 0 0 6px rgba(130, 238, 99, 0.7);
-      flex-shrink: 0;
     }
   </style>
 </head>
@@ -107,7 +116,7 @@
         <span class="bg-gradient-to-br from-foreground to-foreground/60 bg-clip-text text-transparent">The Motion </span><em style="color: #82ee63;">Blog.</em>
       </h1>
       <p class="text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-        Most businesses are guessing when it comes to marketing. These articles exist to change that — every post is pulled directly from the strategies, systems, and hard-won lessons of the people running this business.
+        Most businesses are guessing when it comes to marketing. These articles exist to change that. Every post is pulled directly from the strategies, systems, and honest lessons of the people running this business.
       </p>
     </div>
   </section>
@@ -115,133 +124,99 @@
   <!-- Cards -->
   <main class="px-6 pb-32">
     <div class="max-w-7xl mx-auto">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div id="blog-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
-        <!-- Card 1 -->
+        <!-- Post 1 -->
         <a href="why-meta-ads-get-clicks-but-no-calls/"
-           class="blog-card rounded-3xl overflow-hidden border border-border bg-card scroll-reveal group block"
-           style="transition-delay: 0s;">
-          <!-- Thumbnail -->
+           class="rounded-3xl overflow-hidden border border-border bg-card scroll-reveal block">
           <div class="aspect-[16/9] thumb-dark relative overflow-hidden">
             <img src="../assets/images/meta-dashboard.png"
                  alt=""
                  class="thumb-img w-full h-full object-cover opacity-70 absolute inset-0">
             <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+            <span class="cat-lime absolute top-4 right-4 text-xs font-medium px-3 py-1 rounded-full">Paid Ads</span>
           </div>
-          <!-- Content -->
-          <div class="p-8">
-            <div class="flex items-center justify-between mb-5">
-              <div class="neon-dot"></div>
-              <span class="cat-lime text-xs font-medium px-3 py-1 rounded-full">Paid Ads</span>
-            </div>
-            <div class="font-semibold text-lg mb-3 text-foreground leading-snug">
+          <div class="card-content p-8">
+            <div class="card-title font-semibold text-lg text-foreground mb-4 leading-snug">
               Why Your Meta Ads Are Getting Clicks But Zero Calls
             </div>
             <p class="text-sm leading-relaxed text-muted-foreground mb-8">
-              The ad isn't the problem. It's everything that happens after the click — and fixing it takes less than a week.
+              The ad is rarely the problem. It is everything that happens after the click. Here is the exact disconnect we see in 9 out of 10 service business ad accounts.
             </p>
-            <div class="flex items-center justify-between">
-              <div class="flex items-center gap-2.5">
-                <img src="../assets/images/parker-harris.png"
-                     alt="Parker Harris"
-                     class="w-7 h-7 rounded-full object-cover border border-border"
-                     style="object-position: center top;">
-                <div class="text-xs text-muted-foreground">Parker Harris · Oct 1, 2026</div>
-              </div>
-              <span class="text-sm font-medium text-foreground">→</span>
+            <div class="flex items-center gap-2.5">
+              <img src="../assets/images/parker-harris.png" alt="Parker Harris"
+                   class="w-7 h-7 rounded-full object-cover border border-border"
+                   style="object-position: center top;">
+              <span class="text-sm font-medium text-foreground">Parker Harris &middot; <span class="font-normal text-muted-foreground">Oct 1, 2026 &middot; 5 min</span></span>
             </div>
           </div>
         </a>
 
-        <!-- Card 2 -->
+        <!-- Post 2 -->
         <a href="why-meta-ads-get-clicks-but-no-calls/"
-           class="blog-card rounded-3xl overflow-hidden border border-border bg-card scroll-reveal group block"
-           style="transition-delay: 0.1s;">
+           class="rounded-3xl overflow-hidden border border-border bg-card scroll-reveal block">
           <div class="aspect-[16/9] thumb-lime relative overflow-hidden flex items-center justify-center">
-            <span class="thumb-img text-7xl font-bold" style="color: rgba(0,0,0,0.1); letter-spacing: -2px;">AEO</span>
+            <span class="thumb-img text-7xl font-bold" style="color: rgba(0,0,0,0.1);">AEO</span>
+            <span class="cat-lime absolute top-4 right-4 text-xs font-medium px-3 py-1 rounded-full">SEO / AEO</span>
           </div>
-          <div class="p-8">
-            <div class="flex items-center justify-between mb-5">
-              <div class="neon-dot"></div>
-              <span class="cat-lime text-xs font-medium px-3 py-1 rounded-full">SEO / AEO</span>
-            </div>
-            <div class="font-semibold text-lg mb-3 text-foreground leading-snug">
+          <div class="card-content p-8">
+            <div class="card-title font-semibold text-lg text-foreground mb-4 leading-snug">
               The AEO Guide Every Local Business Should Read Before Their Competitor Does
             </div>
             <p class="text-sm leading-relaxed text-muted-foreground mb-8">
-              ChatGPT is recommending businesses to real buyers right now. Here's how to make sure yours is one of them.
+              ChatGPT is recommending businesses to real buyers right now. Here is how to make sure yours is one of them before someone else takes the spot.
             </p>
-            <div class="flex items-center justify-between">
-              <div class="flex items-center gap-2.5">
-                <img src="../assets/images/taylor-jackson.png"
-                     alt="Taylor Jackson"
-                     class="w-7 h-7 rounded-full object-cover border border-border"
-                     style="object-position: center top;">
-                <div class="text-xs text-muted-foreground">Taylor Jackson · Sep 22, 2026</div>
-              </div>
-              <span class="text-sm font-medium text-foreground">→</span>
+            <div class="flex items-center gap-2.5">
+              <img src="../assets/images/taylor-jackson.png" alt="Taylor Jackson"
+                   class="w-7 h-7 rounded-full object-cover border border-border"
+                   style="object-position: center top;">
+              <span class="text-sm font-medium text-foreground">Taylor Jackson &middot; <span class="font-normal text-muted-foreground">Sep 22, 2026 &middot; 4 min</span></span>
             </div>
           </div>
         </a>
 
-        <!-- Card 3 -->
+        <!-- Post 3 -->
         <a href="why-meta-ads-get-clicks-but-no-calls/"
-           class="blog-card rounded-3xl overflow-hidden border border-border bg-card scroll-reveal group block"
-           style="transition-delay: 0.2s;">
+           class="rounded-3xl overflow-hidden border border-border bg-card scroll-reveal block">
           <div class="aspect-[16/9] thumb-dark relative overflow-hidden flex items-center justify-center">
-            <span class="thumb-img text-6xl font-bold" style="color: rgba(130,238,99,0.22); letter-spacing: -2px;">$5K</span>
+            <span class="thumb-img text-6xl font-bold" style="color: rgba(130,238,99,0.22);">$5K</span>
+            <span class="cat-dark absolute top-4 right-4 text-xs font-medium px-3 py-1 rounded-full">Case Study</span>
           </div>
-          <div class="p-8">
-            <div class="flex items-center justify-between mb-5">
-              <div class="neon-dot"></div>
-              <span class="cat-dark text-xs font-medium px-3 py-1 rounded-full">Case Study</span>
-            </div>
-            <div class="font-semibold text-lg mb-3 text-foreground leading-snug">
+          <div class="card-content p-8">
+            <div class="card-title font-semibold text-lg text-foreground mb-4 leading-snug">
               How We Turned $5K in Ad Spend Into 47 Booked Calls in 30 Days
             </div>
             <p class="text-sm leading-relaxed text-muted-foreground mb-8">
-              A look inside one of our best-performing campaigns — what we tested, what flopped, and the one creative shift that broke it open.
+              A look inside one of our best-performing campaigns. What we tested, what flopped, and the one creative shift that broke it open.
             </p>
-            <div class="flex items-center justify-between">
-              <div class="flex items-center gap-2.5">
-                <img src="../assets/images/parker-harris.png"
-                     alt="Parker Harris"
-                     class="w-7 h-7 rounded-full object-cover border border-border"
-                     style="object-position: center top;">
-                <div class="text-xs text-muted-foreground">Parker Harris · Sep 15, 2026</div>
-              </div>
-              <span class="text-sm font-medium text-foreground">→</span>
+            <div class="flex items-center gap-2.5">
+              <img src="../assets/images/parker-harris.png" alt="Parker Harris"
+                   class="w-7 h-7 rounded-full object-cover border border-border"
+                   style="object-position: center top;">
+              <span class="text-sm font-medium text-foreground">Parker Harris &middot; <span class="font-normal text-muted-foreground">Sep 15, 2026 &middot; 6 min</span></span>
             </div>
           </div>
         </a>
 
-        <!-- Card 4 -->
+        <!-- Post 4 -->
         <a href="why-meta-ads-get-clicks-but-no-calls/"
-           class="blog-card rounded-3xl overflow-hidden border border-border bg-card scroll-reveal group block"
-           style="transition-delay: 0s;">
+           class="rounded-3xl overflow-hidden border border-border bg-card scroll-reveal block">
           <div class="aspect-[16/9] thumb-mid relative overflow-hidden flex items-center justify-center">
             <span class="thumb-img text-6xl font-bold" style="color: rgba(255,255,255,0.1);">CRO</span>
+            <span class="cat-lime absolute top-4 right-4 text-xs font-medium px-3 py-1 rounded-full">Website</span>
           </div>
-          <div class="p-8">
-            <div class="flex items-center justify-between mb-5">
-              <div class="neon-dot"></div>
-              <span class="cat-lime text-xs font-medium px-3 py-1 rounded-full">Website</span>
-            </div>
-            <div class="font-semibold text-lg mb-3 text-foreground leading-snug">
+          <div class="card-content p-8">
+            <div class="card-title font-semibold text-lg text-foreground mb-4 leading-snug">
               What Most NW Arkansas Businesses Get Wrong About Their Website
             </div>
             <p class="text-sm leading-relaxed text-muted-foreground mb-8">
-              Most local business websites are built to look good. We build them to convert. The difference is costing businesses thousands every month.
+              Most local business websites are built to look good. We build them to convert. The difference is costing businesses thousands every single month.
             </p>
-            <div class="flex items-center justify-between">
-              <div class="flex items-center gap-2.5">
-                <img src="../assets/images/taylor-jackson.png"
-                     alt="Taylor Jackson"
-                     class="w-7 h-7 rounded-full object-cover border border-border"
-                     style="object-position: center top;">
-                <div class="text-xs text-muted-foreground">Taylor Jackson · Sep 8, 2026</div>
-              </div>
-              <span class="text-sm font-medium text-foreground">→</span>
+            <div class="flex items-center gap-2.5">
+              <img src="../assets/images/taylor-jackson.png" alt="Taylor Jackson"
+                   class="w-7 h-7 rounded-full object-cover border border-border"
+                   style="object-position: center top;">
+              <span class="text-sm font-medium text-foreground">Taylor Jackson &middot; <span class="font-normal text-muted-foreground">Sep 8, 2026 &middot; 3 min</span></span>
             </div>
           </div>
         </a>

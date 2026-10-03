@@ -81,6 +81,59 @@
       color: #030213;
       border: 1px solid rgba(3, 2, 19, 0.12);
     }
+
+    /* ── Filter pills ── */
+    .filter-pill {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 9999px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      cursor: pointer;
+      border: none;
+      background: none;
+      position: relative;
+      overflow: hidden;
+      padding: 2.5px;
+      flex-shrink: 0;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+    .filter-pill:hover { transform: translateY(-1px); }
+    .filter-pill:not(.active) {
+      background: linear-gradient(145deg, rgba(130,238,99,0.55) 0%, rgba(180,245,161,0.25) 40%, rgba(255,255,255,0.45) 100%);
+      border: 1px solid rgba(130,238,99,0.6);
+      box-shadow: 0 4px 20px rgba(130,238,99,0.2),
+                  0 1px 0 rgba(255,255,255,0.8) inset,
+                  0 -1px 0 rgba(130,238,99,0.15) inset;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+    .filter-pill.active::before {
+      content: "";
+      background: conic-gradient(#0000 0deg, #82ee63 35deg, #b4f5a1 70deg, #82ee63 105deg, #0000 150deg);
+      filter: drop-shadow(0 0 3px rgba(130,238,99,0.7));
+      width: 400%;
+      height: 400%;
+      animation: 2s linear infinite neon-spin;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%) rotate(0deg);
+    }
+    .filter-pill .pill-label {
+      position: relative;
+      z-index: 1;
+      padding: 6px 16px;
+      border-radius: 9999px;
+      display: inline-flex;
+      align-items: center;
+      white-space: nowrap;
+      color: #1a1a1a;
+    }
+    .filter-pill.active .pill-label {
+      background: #f1f5e8;
+      color: #030213;
+    }
   </style>
 </head>
 
@@ -120,17 +173,43 @@
   <!-- Cards -->
   <main class="px-6 pb-4">
     <div class="max-w-7xl mx-auto">
+      <!-- Filter pills -->
+      <div id="filter-pills" class="flex flex-wrap gap-3 justify-center mb-12">
+        <button class="filter-pill active" data-filter="all">
+          <span class="pill-label">All Posts</span>
+        </button>
+        <button class="filter-pill" data-filter="meta-ads">
+          <span class="pill-label">Meta Ads</span>
+        </button>
+        <button class="filter-pill" data-filter="landing-pages">
+          <span class="pill-label">Landing Pages &amp; Funnels</span>
+        </button>
+        <button class="filter-pill" data-filter="automations">
+          <span class="pill-label">Automations</span>
+        </button>
+        <button class="filter-pill" data-filter="email-sms">
+          <span class="pill-label">Email / SMS</span>
+        </button>
+        <button class="filter-pill" data-filter="crm">
+          <span class="pill-label">CRM &amp; Software</span>
+        </button>
+        <button class="filter-pill" data-filter="ai-assistant">
+          <span class="pill-label">AI Assistant</span>
+        </button>
+      </div>
+
       <div id="blog-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
         <!-- Post 1 -->
         <a href="why-meta-ads-get-clicks-but-no-calls/"
-           class="rounded-3xl overflow-hidden border border-border bg-card scroll-reveal block">
+           class="rounded-3xl overflow-hidden border border-border bg-card scroll-reveal block"
+           data-category="meta-ads">
           <div class="aspect-[16/9] thumb-dark relative overflow-hidden">
             <img src="../assets/images/meta-dashboard.png"
                  alt=""
                  class="thumb-img w-full h-full object-cover opacity-70 absolute inset-0">
             <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-            <span class="cat-lime absolute top-4 right-4 text-xs font-medium px-3 py-1 rounded-full">Paid Ads</span>
+            <span class="cat-lime absolute top-4 right-4 text-xs font-medium px-3 py-1 rounded-full">Meta Ads</span>
           </div>
           <div class="card-content p-8">
             <div class="card-title font-semibold text-lg text-foreground mb-4 leading-snug">
@@ -153,13 +232,14 @@
 
         <!-- Post 2 -->
         <a href="why-meta-ads-get-clicks-but-no-calls/"
-           class="rounded-3xl overflow-hidden border border-border bg-card scroll-reveal block">
+           class="rounded-3xl overflow-hidden border border-border bg-card scroll-reveal block"
+           data-category="ai-assistant">
           <div class="aspect-[16/9] thumb-dark relative overflow-hidden">
             <img src="../assets/images/meta-dashboard.png"
                  alt=""
                  class="thumb-img w-full h-full object-cover opacity-70 absolute inset-0">
             <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-            <span class="cat-lime absolute top-4 right-4 text-xs font-medium px-3 py-1 rounded-full">SEO / AEO</span>
+            <span class="cat-lime absolute top-4 right-4 text-xs font-medium px-3 py-1 rounded-full">AI Assistant</span>
           </div>
           <div class="card-content p-8">
             <div class="card-title font-semibold text-lg text-foreground mb-4 leading-snug">
@@ -182,13 +262,14 @@
 
         <!-- Post 3 -->
         <a href="why-meta-ads-get-clicks-but-no-calls/"
-           class="rounded-3xl overflow-hidden border border-border bg-card scroll-reveal block">
+           class="rounded-3xl overflow-hidden border border-border bg-card scroll-reveal block"
+           data-category="meta-ads">
           <div class="aspect-[16/9] thumb-dark relative overflow-hidden">
             <img src="../assets/images/meta-dashboard.png"
                  alt=""
                  class="thumb-img w-full h-full object-cover opacity-70 absolute inset-0">
             <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-            <span class="cat-dark absolute top-4 right-4 text-xs font-medium px-3 py-1 rounded-full">Case Study</span>
+            <span class="cat-lime absolute top-4 right-4 text-xs font-medium px-3 py-1 rounded-full">Meta Ads</span>
           </div>
           <div class="card-content p-8">
             <div class="card-title font-semibold text-lg text-foreground mb-4 leading-snug">
@@ -211,13 +292,14 @@
 
         <!-- Post 4 -->
         <a href="why-meta-ads-get-clicks-but-no-calls/"
-           class="rounded-3xl overflow-hidden border border-border bg-card scroll-reveal block">
+           class="rounded-3xl overflow-hidden border border-border bg-card scroll-reveal block"
+           data-category="landing-pages">
           <div class="aspect-[16/9] thumb-dark relative overflow-hidden">
             <img src="../assets/images/meta-dashboard.png"
                  alt=""
                  class="thumb-img w-full h-full object-cover opacity-70 absolute inset-0">
             <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-            <span class="cat-lime absolute top-4 right-4 text-xs font-medium px-3 py-1 rounded-full">Website</span>
+            <span class="cat-lime absolute top-4 right-4 text-xs font-medium px-3 py-1 rounded-full">Landing Pages</span>
           </div>
           <div class="card-content p-8">
             <div class="card-title font-semibold text-lg text-foreground mb-4 leading-snug">
@@ -253,5 +335,27 @@
   </footer>
 
   <script src="../assets/js/main.js"></script>
+  <script>
+    (function () {
+      var pills = document.querySelectorAll('.filter-pill');
+      var cards = document.querySelectorAll('#blog-grid > a');
+
+      pills.forEach(function (pill) {
+        pill.addEventListener('click', function () {
+          pills.forEach(function (p) { p.classList.remove('active'); });
+          pill.classList.add('active');
+
+          var filter = pill.dataset.filter;
+          cards.forEach(function (card) {
+            if (filter === 'all' || card.dataset.category === filter) {
+              card.style.display = '';
+            } else {
+              card.style.display = 'none';
+            }
+          });
+        });
+      });
+    })();
+  </script>
 </body>
 </html>

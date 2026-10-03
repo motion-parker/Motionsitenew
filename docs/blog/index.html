@@ -48,14 +48,6 @@
       transition-duration: 0.35s;
     }
 
-    /* Thumbnail zoom on hover */
-    #blog-grid > a:hover .thumb-img {
-      transform: scale(1.04);
-    }
-    .thumb-img {
-      transition: transform 0.5s ease;
-    }
-
     /* Mobile: compact like service cards */
     @media (max-width: 767px) {
       #blog-grid { gap: 0.75rem; }
@@ -68,11 +60,6 @@
       #blog-grid > a > .card-content .card-title { font-size: 1.3rem; }
       #blog-grid > a > .card-content > p { font-size: 1rem; line-height: 1.7; }
     }
-
-    /* Gradient thumbnails */
-    .thumb-dark { background: linear-gradient(135deg, #161617 0%, #2c2c2e 100%); }
-    .thumb-lime { background: linear-gradient(135deg, #3a5c00 0%, #82ee63 100%); }
-    .thumb-mid  { background: linear-gradient(135deg, #1e2d00 0%, #3a5c00 60%, #82ee63 100%); }
 
     /* Category pill */
     .cat-lime {
@@ -129,12 +116,8 @@
         <!-- Post 1 -->
         <a href="why-meta-ads-get-clicks-but-no-calls/"
            class="rounded-3xl overflow-hidden border border-border bg-card scroll-reveal block">
-          <div class="aspect-[16/9] thumb-dark relative overflow-hidden">
-            <img src="../assets/images/meta-dashboard.png"
-                 alt=""
-                 class="thumb-img w-full h-full object-cover opacity-70 absolute inset-0">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-            <span class="cat-lime absolute top-4 right-4 text-xs font-medium px-3 py-1 rounded-full">Paid Ads</span>
+          <div class="px-8 pt-8 pb-0">
+            <span class="cat-lime text-xs font-medium px-3 py-1 rounded-full">Paid Ads</span>
           </div>
           <div class="card-content p-8">
             <div class="card-title font-semibold text-lg text-foreground mb-4 leading-snug">
@@ -151,7 +134,6 @@
                 <span class="text-sm font-medium text-foreground">Parker Harris</span>
               </div>
               <span class="text-xs text-muted-foreground">Oct 1 &middot; 5 min</span>
-            </div>
             </div>
           </div>
         </a>

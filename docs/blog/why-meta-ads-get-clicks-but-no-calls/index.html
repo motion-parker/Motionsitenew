@@ -31,6 +31,16 @@
       font-weight: 600;
     }
 
+    /* Per-line gradient — tiles every line-height so no line fades more than the last */
+    .heading-gradient {
+      background-image: linear-gradient(to bottom right, #030213 0%, rgba(3, 2, 19, 0.6) 100%);
+      background-size: 100% 1.25em;
+      background-repeat: repeat-y;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
     /* Reading progress bar */
     #progress-bar {
       position: fixed;
@@ -174,7 +184,7 @@
 
       <!-- Title -->
       <h1 class="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight mb-8 leading-tight">
-        <span class="bg-gradient-to-br from-foreground to-foreground/85 bg-clip-text text-transparent">
+        <span class="heading-gradient">
           Why Your Meta Ads Are Getting Clicks But <em style="color: #82ee63;">Zero</em> Calls
         </span>
       </h1>

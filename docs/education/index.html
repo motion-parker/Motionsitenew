@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Education | Motion Marketing</title>
   <meta name="robots" content="index, follow">
-  <meta name="description" content="Free videos, frameworks, and playbooks on generating leads for local service businesses. Everything we know, yours to keep.">
 
   <!-- Favicon -->
   <link rel="icon" href="../favicon.ico" sizes="any">
@@ -26,123 +25,169 @@
     #site-logo { height: 64px; }
     @media(min-width: 768px) { #site-logo { height: 72px; } }
 
-    h1 em, h2 em {
+    h1 em {
       font-family: 'Playfair Display', Georgia, serif;
       font-style: italic;
       font-weight: 600;
     }
 
-    /* Education cards */
-    #edu-grid > a {
-      transition: opacity 0.6s ease-out, transform 0.6s ease-out,
-                  border-color 0.35s ease, box-shadow 0.35s ease;
+    /* Layout */
+    .edu-layout {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
     }
-    #edu-grid > a:nth-child(3n+1) { transition-delay: 0s,   0s,   0s, 0s; }
-    #edu-grid > a:nth-child(3n+2) { transition-delay: 0.1s, 0.1s, 0s, 0s; }
-    #edu-grid > a:nth-child(3n+3) { transition-delay: 0.2s, 0.2s, 0s, 0s; }
-    #edu-grid > a:hover {
-      border-color: #82ee63;
-      box-shadow: 0 14px 36px rgba(130, 238, 99, 0.28);
-      transform: translateY(-4px);
-      transition-delay: 0s;
-      transition-duration: 0.35s;
+    @media (min-width: 900px) {
+      .edu-layout {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 1.5rem;
+      }
     }
-    #edu-grid > a:hover .thumb-img { transform: scale(1.04); }
-    .thumb-img { transition: transform 0.5s ease; }
 
-    /* Featured card */
-    .featured-card:hover {
-      border-color: #82ee63;
-      box-shadow: 0 14px 36px rgba(130, 238, 99, 0.28);
-      transform: translateY(-3px);
+    /* Sidebar */
+    .module-sidebar {
+      border-radius: 1.5rem;
+      border: 1px solid var(--border);
+      background: var(--card);
+      overflow: hidden;
+      flex-shrink: 0;
     }
-    .featured-card { transition: border-color 0.35s ease, box-shadow 0.35s ease, transform 0.35s ease; }
-    .featured-card:hover .thumb-img { transform: scale(1.03); }
+    @media (min-width: 900px) {
+      .module-sidebar { width: 280px; }
+    }
 
-    /* Thumbnail */
-    .thumb-dark { background: linear-gradient(135deg, #161617 0%, #2c2c2e 100%); }
+    .module-item {
+      display: flex;
+      align-items: center;
+      gap: 0.875rem;
+      padding: 0.9rem 1.25rem;
+      cursor: pointer;
+      border: none;
+      background: none;
+      width: 100%;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+      transition: background 0.2s ease;
+      position: relative;
+    }
+    .module-item:last-child { border-bottom: none; }
+    .module-item:hover { background: rgba(130, 238, 99, 0.06); }
+    .module-item.active {
+      background: rgba(130, 238, 99, 0.12);
+    }
+    .module-item.active::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 3px;
+      background: #82ee63;
+      border-radius: 0 3px 3px 0;
+    }
 
-    /* Play button */
+    .module-num {
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--muted-foreground);
+      min-width: 1.25rem;
+      letter-spacing: 0.05em;
+    }
+    .module-item.active .module-num { color: #3a6600; }
+
+    .module-title {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--foreground);
+      line-height: 1.35;
+    }
+    .module-item.active .module-title { color: #1a3300; font-weight: 600; }
+
+    .module-duration {
+      margin-left: auto;
+      font-size: 0.7rem;
+      color: var(--muted-foreground);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    /* Video area */
+    .video-area { flex: 1; min-width: 0; }
+
+    .video-box {
+      border-radius: 1.5rem;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: linear-gradient(135deg, #161617 0%, #2c2c2e 100%);
+      aspect-ratio: 16 / 9;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+    .video-box img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.45;
+    }
+    .video-box .overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.35) 0%, transparent 60%);
+    }
     .play-btn {
-      width: 52px; height: 52px;
+      position: relative;
+      z-index: 2;
+      width: 64px; height: 64px;
       border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
-      background: rgba(255,255,255,0.18);
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(255,255,255,0.3);
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(10px);
+      border: 1.5px solid rgba(255,255,255,0.3);
       transition: transform 0.25s ease, background 0.25s ease;
     }
-    #edu-grid > a:hover .play-btn,
-    .featured-card:hover .play-btn {
+    .video-box:hover .play-btn {
       transform: scale(1.1);
       background: rgba(130, 238, 99, 0.35);
+      border-color: rgba(130, 238, 99, 0.6);
     }
 
-    /* Type badge */
-    .badge-video {
-      background: rgba(130, 238, 99, 0.18);
+    /* Video meta below player */
+    .video-meta {
+      margin-top: 1.25rem;
+      padding: 1.5rem 1.75rem;
+      border-radius: 1.5rem;
+      border: 1px solid var(--border);
+      background: var(--card);
+    }
+    .video-meta .lesson-label {
+      font-size: 0.75rem;
+      font-weight: 600;
       color: #3a6600;
-      border: 1px solid rgba(130, 238, 99, 0.35);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.5rem;
     }
-    .badge-guide {
-      background: rgba(3, 2, 19, 0.07);
-      color: #030213;
-      border: 1px solid rgba(3, 2, 19, 0.15);
+    .video-meta .lesson-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--foreground);
+      line-height: 1.35;
+      margin-bottom: 0.6rem;
     }
-    .badge-playbook {
-      background: rgba(255,255,255,0.18);
-      color: #fff;
-      border: 1px solid rgba(255,255,255,0.3);
+    .video-meta .lesson-desc {
+      font-size: 0.9rem;
+      color: var(--muted-foreground);
+      line-height: 1.65;
     }
-
-    /* Card content */
-    @media (max-width: 767px) {
-      #edu-grid { gap: 0.75rem; }
-      #edu-grid > a > .card-content { padding: 1.25rem 1.4rem; }
-    }
-    @media (min-width: 768px) {
-      #edu-grid { gap: 1.75rem; }
-      #edu-grid > a > .card-content { padding: 2rem; }
-      #edu-grid > a > .card-content .card-title { font-size: 1.15rem; }
-    }
-
-    /* Filter pills */
-    .filter-pill {
-      display: inline-flex; align-items: center;
-      border-radius: 9999px;
-      font-size: 0.875rem; font-weight: 500;
-      cursor: pointer; border: none; background: none;
-      position: relative; overflow: hidden;
-      padding: 2.5px; flex-shrink: 0;
-      transition: transform 0.2s ease, opacity 0.2s ease;
-    }
-    .filter-pill:hover { transform: translateY(-1px); }
-    .filter-pill:not(.active) {
-      background: linear-gradient(145deg, rgba(130,238,99,0.55) 0%, rgba(180,245,161,0.25) 40%, rgba(255,255,255,0.45) 100%);
-      border: 1px solid rgba(130,238,99,0.6);
-      box-shadow: 0 4px 20px rgba(130,238,99,0.2),
-                  0 1px 0 rgba(255,255,255,0.8) inset,
-                  0 -1px 0 rgba(130,238,99,0.15) inset;
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-    }
-    .filter-pill.active::before {
-      content: "";
-      background: conic-gradient(#0000 0deg,#82ee63 35deg,#b4f5a1 70deg,#82ee63 105deg,#0000 150deg);
-      filter: drop-shadow(0 0 3px rgba(130,238,99,0.7));
-      width: 400%; height: 400%;
-      animation: 2s linear infinite neon-spin;
-      position: absolute; top: 50%; left: 50%;
-      transform: translate(-50%,-50%) rotate(0deg);
-    }
-    .filter-pill .pill-label {
-      position: relative; z-index: 1;
-      padding: 6px 16px; border-radius: 9999px;
-      display: inline-flex; align-items: center;
-      white-space: nowrap; color: #1a1a1a;
-    }
-    .filter-pill.active .pill-label {
-      background: #f1f5e8; color: #030213;
+    .video-meta .lesson-author {
+      margin-top: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
     }
   </style>
 </head>
@@ -161,260 +206,99 @@
     </a>
   </nav>
 
-  <!-- Hero -->
-  <section class="relative pb-16 px-6 text-center" style="padding-top: max(11rem, calc(50vh - 15rem));">
-    <div class="max-w-3xl mx-auto scroll-reveal">
-      <div class="inline-flex items-center gap-2 mb-8 px-4 py-2 bg-primary/5 rounded-full border border-primary/10">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-             stroke-linecap="round" stroke-linejoin="round" class="text-primary" aria-hidden="true">
-          <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
-        </svg>
-        <span class="text-sm text-primary">Free Education</span>
+  <!-- Page -->
+  <div class="px-4 md:px-8 pb-20" style="padding-top: max(8rem, calc(50vh - 26rem));">
+    <div class="max-w-6xl mx-auto">
+
+      <!-- Header -->
+      <div class="mb-8">
+        <h1 class="text-3xl md:text-5xl font-semibold tracking-tight leading-tight">
+          <span class="bg-gradient-to-br from-foreground to-foreground/60 bg-clip-text text-transparent">Motion Marketing's </span><em style="color: #82ee63;">Education</em>
+        </h1>
+        <p class="mt-2 text-muted-foreground text-base">Everything we know about growing a local service business. Free.</p>
       </div>
-      <h1 class="text-5xl md:text-7xl font-semibold tracking-tight mb-8 leading-none">
-        <span class="bg-gradient-to-br from-foreground to-foreground/60 bg-clip-text text-transparent">The Motion </span><em style="color: #82ee63;">Education</em>
-      </h1>
-      <p class="text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-        Every framework, playbook, and video we use to grow local service businesses. No email required. No course fee. Just the actual stuff that works.
-      </p>
-    </div>
-  </section>
 
-  <!-- Content -->
-  <main class="px-6 pb-4">
-    <div class="max-w-7xl mx-auto">
+      <!-- Layout -->
+      <div class="edu-layout">
 
-      <!-- Featured -->
-      <a href="#" class="featured-card scroll-reveal block rounded-3xl overflow-hidden border border-border bg-card mb-10 md:mb-14 md:flex">
-        <div class="md:w-1/2 aspect-video md:aspect-auto thumb-dark relative overflow-hidden">
-          <img src="../assets/images/meta-dashboard.png" alt=""
-               class="thumb-img w-full h-full object-cover opacity-60 absolute inset-0">
-          <div class="absolute inset-0 bg-gradient-to-tr from-black/40 to-transparent"></div>
-          <div class="absolute inset-0 flex items-center justify-center">
+        <!-- Sidebar -->
+        <aside class="module-sidebar">
+          <button class="module-item active" data-module="0">
+            <span class="module-num">01</span>
+            <span class="module-title">Why Most Local Ads Fail</span>
+            <span class="module-duration">12 min</span>
+          </button>
+          <button class="module-item" data-module="1">
+            <span class="module-num">02</span>
+            <span class="module-title">The Offer — What You're Actually Selling</span>
+            <span class="module-duration">9 min</span>
+          </button>
+          <button class="module-item" data-module="2">
+            <span class="module-num">03</span>
+            <span class="module-title">Meta Ads Fundamentals</span>
+            <span class="module-duration">18 min</span>
+          </button>
+          <button class="module-item" data-module="3">
+            <span class="module-num">04</span>
+            <span class="module-title">Landing Pages That Convert Cold Traffic</span>
+            <span class="module-duration">14 min</span>
+          </button>
+          <button class="module-item" data-module="4">
+            <span class="module-num">05</span>
+            <span class="module-title">The Follow-Up System</span>
+            <span class="module-duration">11 min</span>
+          </button>
+          <button class="module-item" data-module="5">
+            <span class="module-num">06</span>
+            <span class="module-title">Email &amp; SMS Sequences</span>
+            <span class="module-duration">16 min</span>
+          </button>
+          <button class="module-item" data-module="6">
+            <span class="module-num">07</span>
+            <span class="module-title">Reading Your Numbers</span>
+            <span class="module-duration">10 min</span>
+          </button>
+          <button class="module-item" data-module="7">
+            <span class="module-num">08</span>
+            <span class="module-title">Scaling What Works</span>
+            <span class="module-duration">20 min</span>
+          </button>
+        </aside>
+
+        <!-- Video -->
+        <div class="video-area">
+          <div class="video-box">
+            <img src="../assets/images/meta-dashboard.png" alt="">
+            <div class="overlay"></div>
             <div class="play-btn">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="white" stroke="none" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="white" stroke="none" aria-hidden="true">
                 <polygon points="5 3 19 12 5 21 5 3"/>
               </svg>
             </div>
           </div>
-          <span class="absolute top-4 left-4 text-xs font-medium px-3 py-1 rounded-full badge-playbook">Featured</span>
-        </div>
-        <div class="md:w-1/2 p-8 md:p-10 flex flex-col justify-center">
-          <div class="flex items-center gap-2 mb-4">
-            <span class="text-xs font-medium px-3 py-1 rounded-full badge-video">Video Series</span>
-            <span class="text-xs text-muted-foreground">Meta Ads</span>
-          </div>
-          <div class="text-2xl md:text-3xl font-semibold text-foreground leading-snug mb-4">
-            The Complete Meta Ads Playbook for Local Service Businesses
-          </div>
-          <p class="text-sm leading-relaxed text-muted-foreground mb-6">
-            Five videos. One system. We break down exactly how we build, test, and scale Meta ad campaigns for service businesses in competitive local markets.
-          </p>
-          <div class="flex items-center justify-between">
-            <div class="flex items-center gap-2.5">
+
+          <div class="video-meta">
+            <div class="lesson-label" id="lesson-num">Module 01</div>
+            <div class="lesson-title" id="lesson-title">Why Most Local Ads Fail</div>
+            <p class="lesson-desc" id="lesson-desc">
+              Before we get into tactics, we need to talk about the real reason most local ad campaigns never work. It is not the budget. It is not the targeting. This module breaks down the root cause so everything else we cover actually sticks.
+            </p>
+            <div class="lesson-author">
               <img src="../assets/images/parker-harris.png" alt="Parker Harris"
                    class="w-7 h-7 rounded-full object-cover border border-border"
                    style="object-position: center top;">
               <span class="text-sm font-medium text-foreground">Parker Harris</span>
+              <span class="text-xs text-muted-foreground ml-auto" id="lesson-duration">12 min</span>
             </div>
-            <span class="text-xs text-muted-foreground">5 videos &middot; 48 min total</span>
           </div>
         </div>
-      </a>
-
-      <!-- Filter pills -->
-      <div id="filter-pills" class="flex flex-wrap gap-3 justify-center mb-12">
-        <button class="filter-pill active" data-filter="all">
-          <span class="pill-label">All</span>
-        </button>
-        <button class="filter-pill" data-filter="meta-ads">
-          <span class="pill-label">Meta Ads</span>
-        </button>
-        <button class="filter-pill" data-filter="landing-pages">
-          <span class="pill-label">Landing Pages &amp; Funnels</span>
-        </button>
-        <button class="filter-pill" data-filter="automations">
-          <span class="pill-label">Automations</span>
-        </button>
-        <button class="filter-pill" data-filter="email-sms">
-          <span class="pill-label">Email / SMS</span>
-        </button>
-      </div>
-
-      <!-- Grid -->
-      <div id="edu-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-
-        <!-- Card 1 -->
-        <a href="#" class="rounded-3xl overflow-hidden border border-border bg-card scroll-reveal block" data-category="meta-ads">
-          <div class="aspect-[16/9] thumb-dark relative overflow-hidden">
-            <img src="../assets/images/meta-dashboard.png" alt=""
-                 class="thumb-img w-full h-full object-cover opacity-60 absolute inset-0">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
-            <div class="absolute inset-0 flex items-center justify-center">
-              <div class="play-btn">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="white" stroke="none" aria-hidden="true">
-                  <polygon points="5 3 19 12 5 21 5 3"/>
-                </svg>
-              </div>
-            </div>
-            <span class="badge-video absolute top-4 right-4 text-xs font-medium px-3 py-1 rounded-full">Video</span>
-          </div>
-          <div class="card-content p-8">
-            <div class="card-title font-semibold text-lg text-foreground mb-3 leading-snug">
-              Why Your Meta Ads Get Clicks But Zero Calls
-            </div>
-            <div class="flex items-center justify-between">
-              <div class="flex items-center gap-2.5">
-                <img src="../assets/images/parker-harris.png" alt="Parker Harris"
-                     class="w-7 h-7 rounded-full object-cover border border-border"
-                     style="object-position: center top;">
-                <span class="text-sm font-medium text-foreground">Parker Harris</span>
-              </div>
-              <span class="text-xs text-muted-foreground">12 min</span>
-            </div>
-          </div>
-        </a>
-
-        <!-- Card 2 -->
-        <a href="#" class="rounded-3xl overflow-hidden border border-border bg-card scroll-reveal block" data-category="landing-pages">
-          <div class="aspect-[16/9] thumb-dark relative overflow-hidden">
-            <img src="../assets/images/meta-dashboard.png" alt=""
-                 class="thumb-img w-full h-full object-cover opacity-60 absolute inset-0">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
-            <span class="badge-guide absolute top-4 right-4 text-xs font-medium px-3 py-1 rounded-full">Guide</span>
-          </div>
-          <div class="card-content p-8">
-            <div class="card-title font-semibold text-lg text-foreground mb-3 leading-snug">
-              The Landing Page Blueprint That Converts Cold Traffic
-            </div>
-            <div class="flex items-center justify-between">
-              <div class="flex items-center gap-2.5">
-                <img src="../assets/images/taylor-jackson.png" alt="Taylor Jackson"
-                     class="w-7 h-7 rounded-full object-cover border border-border"
-                     style="object-position: center top;">
-                <span class="text-sm font-medium text-foreground">Taylor Jackson</span>
-              </div>
-              <span class="text-xs text-muted-foreground">8 min read</span>
-            </div>
-          </div>
-        </a>
-
-        <!-- Card 3 -->
-        <a href="#" class="rounded-3xl overflow-hidden border border-border bg-card scroll-reveal block" data-category="automations">
-          <div class="aspect-[16/9] thumb-dark relative overflow-hidden">
-            <img src="../assets/images/meta-dashboard.png" alt=""
-                 class="thumb-img w-full h-full object-cover opacity-60 absolute inset-0">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
-            <div class="absolute inset-0 flex items-center justify-center">
-              <div class="play-btn">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="white" stroke="none" aria-hidden="true">
-                  <polygon points="5 3 19 12 5 21 5 3"/>
-                </svg>
-              </div>
-            </div>
-            <span class="badge-video absolute top-4 right-4 text-xs font-medium px-3 py-1 rounded-full">Video</span>
-          </div>
-          <div class="card-content p-8">
-            <div class="card-title font-semibold text-lg text-foreground mb-3 leading-snug">
-              The Follow-Up Sequence That Books Calls on Autopilot
-            </div>
-            <div class="flex items-center justify-between">
-              <div class="flex items-center gap-2.5">
-                <img src="../assets/images/parker-harris.png" alt="Parker Harris"
-                     class="w-7 h-7 rounded-full object-cover border border-border"
-                     style="object-position: center top;">
-                <span class="text-sm font-medium text-foreground">Parker Harris</span>
-              </div>
-              <span class="text-xs text-muted-foreground">18 min</span>
-            </div>
-          </div>
-        </a>
-
-        <!-- Card 4 -->
-        <a href="#" class="rounded-3xl overflow-hidden border border-border bg-card scroll-reveal block" data-category="email-sms">
-          <div class="aspect-[16/9] thumb-dark relative overflow-hidden">
-            <img src="../assets/images/meta-dashboard.png" alt=""
-                 class="thumb-img w-full h-full object-cover opacity-60 absolute inset-0">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
-            <span class="badge-guide absolute top-4 right-4 text-xs font-medium px-3 py-1 rounded-full">Playbook</span>
-          </div>
-          <div class="card-content p-8">
-            <div class="card-title font-semibold text-lg text-foreground mb-3 leading-snug">
-              The 5-Email Nurture Sequence Every Service Business Needs
-            </div>
-            <div class="flex items-center justify-between">
-              <div class="flex items-center gap-2.5">
-                <img src="../assets/images/taylor-jackson.png" alt="Taylor Jackson"
-                     class="w-7 h-7 rounded-full object-cover border border-border"
-                     style="object-position: center top;">
-                <span class="text-sm font-medium text-foreground">Taylor Jackson</span>
-              </div>
-              <span class="text-xs text-muted-foreground">6 min read</span>
-            </div>
-          </div>
-        </a>
-
-        <!-- Card 5 -->
-        <a href="#" class="rounded-3xl overflow-hidden border border-border bg-card scroll-reveal block" data-category="meta-ads">
-          <div class="aspect-[16/9] thumb-dark relative overflow-hidden">
-            <img src="../assets/images/meta-dashboard.png" alt=""
-                 class="thumb-img w-full h-full object-cover opacity-60 absolute inset-0">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
-            <div class="absolute inset-0 flex items-center justify-center">
-              <div class="play-btn">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="white" stroke="none" aria-hidden="true">
-                  <polygon points="5 3 19 12 5 21 5 3"/>
-                </svg>
-              </div>
-            </div>
-            <span class="badge-video absolute top-4 right-4 text-xs font-medium px-3 py-1 rounded-full">Video</span>
-          </div>
-          <div class="card-content p-8">
-            <div class="card-title font-semibold text-lg text-foreground mb-3 leading-snug">
-              How We Spent $5K and Booked 47 Calls in 30 Days
-            </div>
-            <div class="flex items-center justify-between">
-              <div class="flex items-center gap-2.5">
-                <img src="../assets/images/parker-harris.png" alt="Parker Harris"
-                     class="w-7 h-7 rounded-full object-cover border border-border"
-                     style="object-position: center top;">
-                <span class="text-sm font-medium text-foreground">Parker Harris</span>
-              </div>
-              <span class="text-xs text-muted-foreground">22 min</span>
-            </div>
-          </div>
-        </a>
-
-        <!-- Card 6 -->
-        <a href="#" class="rounded-3xl overflow-hidden border border-border bg-card scroll-reveal block" data-category="landing-pages">
-          <div class="aspect-[16/9] thumb-dark relative overflow-hidden">
-            <img src="../assets/images/meta-dashboard.png" alt=""
-                 class="thumb-img w-full h-full object-cover opacity-60 absolute inset-0">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
-            <span class="badge-guide absolute top-4 right-4 text-xs font-medium px-3 py-1 rounded-full">Guide</span>
-          </div>
-          <div class="card-content p-8">
-            <div class="card-title font-semibold text-lg text-foreground mb-3 leading-snug">
-              What NW Arkansas Businesses Get Wrong About Their Website
-            </div>
-            <div class="flex items-center justify-between">
-              <div class="flex items-center gap-2.5">
-                <img src="../assets/images/taylor-jackson.png" alt="Taylor Jackson"
-                     class="w-7 h-7 rounded-full object-cover border border-border"
-                     style="object-position: center top;">
-                <span class="text-sm font-medium text-foreground">Taylor Jackson</span>
-              </div>
-              <span class="text-xs text-muted-foreground">5 min read</span>
-            </div>
-          </div>
-        </a>
 
       </div>
     </div>
-  </main>
+  </div>
 
   <!-- Footer -->
-  <footer class="pt-24 pb-10 text-center text-sm text-muted-foreground">
+  <footer class="pb-10 text-center text-sm text-muted-foreground">
     <p>&copy; 2026 Motion Marketing. All rights reserved.</p>
     <p class="mt-2">
       <a href="../privacy-policy/" class="hover:text-foreground transition-colors underline">Privacy Policy</a>
@@ -425,21 +309,41 @@
 
   <script src="../assets/js/main.js"></script>
   <script>
-    (function () {
-      var pills = document.querySelectorAll('.filter-pill');
-      var cards = document.querySelectorAll('#edu-grid > a');
+    var modules = [
+      { num: '01', title: 'Why Most Local Ads Fail', desc: 'Before we get into tactics, we need to talk about the real reason most local ad campaigns never work. It is not the budget. It is not the targeting. This module breaks down the root cause so everything else we cover actually sticks.', duration: '12 min', author: 'Parker Harris', avatar: '../assets/images/parker-harris.png' },
+      { num: '02', title: 'The Offer — What You\'re Actually Selling', desc: 'Most businesses advertise their service. The ones that win advertise the outcome. This module walks through how to reframe your offer so it speaks directly to what your customer actually wants.', duration: '9 min', author: 'Taylor Jackson', avatar: '../assets/images/taylor-jackson.png' },
+      { num: '03', title: 'Meta Ads Fundamentals', desc: 'Campaign structure, budget logic, audience targeting, and why most accounts are set up backwards. This is the foundation everything else is built on.', duration: '18 min', author: 'Parker Harris', avatar: '../assets/images/parker-harris.png' },
+      { num: '04', title: 'Landing Pages That Convert Cold Traffic', desc: 'Getting the click is step one. Turning that click into a booked call is the hard part. We cover message match, page structure, and the one thing that makes or breaks conversion rate.', duration: '14 min', author: 'Taylor Jackson', avatar: '../assets/images/taylor-jackson.png' },
+      { num: '05', title: 'The Follow-Up System', desc: 'Speed is everything. This module covers the exact automation sequence we use to contact new leads in under two minutes and keep following up until they book or tell us to stop.', duration: '11 min', author: 'Parker Harris', avatar: '../assets/images/parker-harris.png' },
+      { num: '06', title: 'Email & SMS Sequences', desc: 'Long-term nurture is where most businesses leave money on the table. This module covers the five-touch sequence that warms up leads who were not ready to book the first time around.', duration: '16 min', author: 'Taylor Jackson', avatar: '../assets/images/taylor-jackson.png' },
+      { num: '07', title: 'Reading Your Numbers', desc: 'Cost per lead, cost per call booked, show rate, close rate — these are the four numbers that tell you whether your system is working. We show you exactly how to read them and what to do about each one.', duration: '10 min', author: 'Parker Harris', avatar: '../assets/images/parker-harris.png' },
+      { num: '08', title: 'Scaling What Works', desc: 'Once the machine is running, the job is simple: put more money in and get more results out. This module covers how to scale budgets without breaking performance and when to expand to new markets.', duration: '20 min', author: 'Parker Harris', avatar: '../assets/images/parker-harris.png' },
+    ];
 
-      pills.forEach(function (pill) {
-        pill.addEventListener('click', function () {
-          pills.forEach(function (p) { p.classList.remove('active'); });
-          pill.classList.add('active');
-          var filter = pill.dataset.filter;
-          cards.forEach(function (card) {
-            card.style.display = (filter === 'all' || card.dataset.category === filter) ? '' : 'none';
-          });
-        });
+    var items = document.querySelectorAll('.module-item');
+    var lessonNum = document.getElementById('lesson-num');
+    var lessonTitle = document.getElementById('lesson-title');
+    var lessonDesc = document.getElementById('lesson-desc');
+    var lessonDuration = document.getElementById('lesson-duration');
+
+    items.forEach(function (item) {
+      item.addEventListener('click', function () {
+        items.forEach(function (i) { i.classList.remove('active'); });
+        item.classList.add('active');
+
+        var idx = parseInt(item.dataset.module, 10);
+        var m = modules[idx];
+        lessonNum.textContent = 'Module ' + m.num;
+        lessonTitle.textContent = m.title;
+        lessonDesc.textContent = m.desc;
+        lessonDuration.textContent = m.duration;
+
+        var authorEl = document.querySelector('.lesson-author .text-sm');
+        var avatarEl = document.querySelector('.lesson-author img');
+        if (authorEl) authorEl.textContent = m.author;
+        if (avatarEl) { avatarEl.src = m.avatar; avatarEl.alt = m.author; }
       });
-    })();
+    });
   </script>
 </body>
 </html>

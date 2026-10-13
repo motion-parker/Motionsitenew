@@ -45,36 +45,57 @@
       }
     }
 
-    /* Sidebar */
+    /* Sidebar — dark, like Hormozi's */
     .module-sidebar {
       border-radius: 1.5rem;
-      border: 1px solid var(--border);
-      background: var(--card);
       overflow: hidden;
       flex-shrink: 0;
+      background: #111118;
+      border: 1px solid rgba(255,255,255,0.07);
     }
     @media (min-width: 900px) {
-      .module-sidebar { width: 280px; }
+      .module-sidebar { width: 300px; }
+    }
+
+    /* Sidebar header banner */
+    .sidebar-banner {
+      padding: 1.25rem 1.5rem 1rem;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      text-align: center;
+    }
+    .sidebar-banner .banner-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #82ee63;
+      margin-bottom: 0.3rem;
+    }
+    .sidebar-banner .banner-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #fff;
+      line-height: 1.3;
     }
 
     .module-item {
       display: flex;
       align-items: center;
-      gap: 0.875rem;
-      padding: 0.9rem 1.25rem;
+      justify-content: center;
+      padding: 0.95rem 1.5rem;
       cursor: pointer;
       border: none;
       background: none;
       width: 100%;
-      text-align: left;
-      border-bottom: 1px solid var(--border);
-      transition: background 0.2s ease;
+      text-align: center;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      transition: background 0.18s ease;
       position: relative;
     }
     .module-item:last-child { border-bottom: none; }
-    .module-item:hover { background: rgba(130, 238, 99, 0.06); }
+    .module-item:hover { background: rgba(255,255,255,0.05); }
     .module-item.active {
-      background: rgba(130, 238, 99, 0.12);
+      background: rgba(130, 238, 99, 0.1);
     }
     .module-item.active::before {
       content: '';
@@ -85,29 +106,15 @@
       border-radius: 0 3px 3px 0;
     }
 
-    .module-num {
-      font-size: 0.7rem;
-      font-weight: 600;
-      color: var(--muted-foreground);
-      min-width: 1.25rem;
-      letter-spacing: 0.05em;
-    }
-    .module-item.active .module-num { color: #3a6600; }
-
     .module-title {
       font-size: 0.875rem;
       font-weight: 500;
-      color: var(--foreground);
+      color: rgba(255,255,255,0.6);
       line-height: 1.35;
     }
-    .module-item.active .module-title { color: #1a3300; font-weight: 600; }
-
-    .module-duration {
-      margin-left: auto;
-      font-size: 0.7rem;
-      color: var(--muted-foreground);
-      white-space: nowrap;
-      flex-shrink: 0;
+    .module-item.active .module-title {
+      color: #fff;
+      font-weight: 600;
     }
 
     /* Video area */
@@ -116,8 +123,8 @@
     .video-box {
       border-radius: 1.5rem;
       overflow: hidden;
-      border: 1px solid var(--border);
-      background: linear-gradient(135deg, #161617 0%, #2c2c2e 100%);
+      border: 1px solid rgba(255,255,255,0.08);
+      background: #111118;
       aspect-ratio: 16 / 9;
       position: relative;
       display: flex;
@@ -125,34 +132,35 @@
       justify-content: center;
       cursor: pointer;
     }
-    .video-box img {
+    .video-box img.thumb {
       position: absolute;
       inset: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
-      opacity: 0.45;
+      object-position: center top;
+      opacity: 0.7;
     }
     .video-box .overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.35) 0%, transparent 60%);
+      background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.1) 60%, transparent 100%);
     }
     .play-btn {
       position: relative;
       z-index: 2;
-      width: 64px; height: 64px;
+      width: 72px; height: 72px;
       border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
       background: rgba(255,255,255,0.15);
-      backdrop-filter: blur(10px);
-      border: 1.5px solid rgba(255,255,255,0.3);
-      transition: transform 0.25s ease, background 0.25s ease;
+      backdrop-filter: blur(12px);
+      border: 1.5px solid rgba(255,255,255,0.35);
+      transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
     }
     .video-box:hover .play-btn {
       transform: scale(1.1);
       background: rgba(130, 238, 99, 0.35);
-      border-color: rgba(130, 238, 99, 0.6);
+      border-color: rgba(130, 238, 99, 0.7);
     }
 
     /* Video meta below player */
@@ -210,12 +218,12 @@
   <div class="px-4 md:px-8 pb-20" style="padding-top: max(8rem, calc(50vh - 26rem));">
     <div class="max-w-6xl mx-auto">
 
-      <!-- Header -->
-      <div class="mb-8">
+      <!-- Header — centered like other pages -->
+      <div class="mb-10 text-center">
         <h1 class="text-3xl md:text-5xl font-semibold tracking-tight leading-tight">
           <span class="bg-gradient-to-br from-foreground to-foreground/60 bg-clip-text text-transparent">Motion Marketing's </span><em style="color: #82ee63;">Education</em>
         </h1>
-        <p class="mt-2 text-muted-foreground text-base">Everything we know about growing a local service business. Free.</p>
+        <p class="mt-3 text-muted-foreground text-base max-w-lg mx-auto">Everything we know about growing a local service business. Free.</p>
       </div>
 
       <!-- Layout -->
@@ -223,56 +231,44 @@
 
         <!-- Sidebar -->
         <aside class="module-sidebar">
+          <div class="sidebar-banner">
+            <div class="banner-label">Free Course</div>
+            <div class="banner-title">Local Business Growth System</div>
+          </div>
           <button class="module-item active" data-module="0">
-            <span class="module-num">01</span>
             <span class="module-title">Why Most Local Ads Fail</span>
-            <span class="module-duration">12 min</span>
           </button>
           <button class="module-item" data-module="1">
-            <span class="module-num">02</span>
             <span class="module-title">The Offer — What You're Actually Selling</span>
-            <span class="module-duration">9 min</span>
           </button>
           <button class="module-item" data-module="2">
-            <span class="module-num">03</span>
             <span class="module-title">Meta Ads Fundamentals</span>
-            <span class="module-duration">18 min</span>
           </button>
           <button class="module-item" data-module="3">
-            <span class="module-num">04</span>
             <span class="module-title">Landing Pages That Convert Cold Traffic</span>
-            <span class="module-duration">14 min</span>
           </button>
           <button class="module-item" data-module="4">
-            <span class="module-num">05</span>
             <span class="module-title">The Follow-Up System</span>
-            <span class="module-duration">11 min</span>
           </button>
           <button class="module-item" data-module="5">
-            <span class="module-num">06</span>
             <span class="module-title">Email &amp; SMS Sequences</span>
-            <span class="module-duration">16 min</span>
           </button>
           <button class="module-item" data-module="6">
-            <span class="module-num">07</span>
             <span class="module-title">Reading Your Numbers</span>
-            <span class="module-duration">10 min</span>
           </button>
           <button class="module-item" data-module="7">
-            <span class="module-num">08</span>
             <span class="module-title">Scaling What Works</span>
-            <span class="module-duration">20 min</span>
           </button>
         </aside>
 
         <!-- Video -->
         <div class="video-area">
           <div class="video-box">
-            <img src="../assets/images/meta-dashboard.png" alt="">
+            <img class="thumb" src="../assets/images/parker-harris-800.png" alt="Parker Harris presenting">
             <div class="overlay"></div>
             <div class="play-btn">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="white" stroke="none" aria-hidden="true">
-                <polygon points="5 3 19 12 5 21 5 3"/>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="white" stroke="none" aria-hidden="true">
+                <polygon points="6 3 20 12 6 21 6 3"/>
               </svg>
             </div>
           </div>
@@ -310,14 +306,14 @@
   <script src="../assets/js/main.js"></script>
   <script>
     var modules = [
-      { num: '01', title: 'Why Most Local Ads Fail', desc: 'Before we get into tactics, we need to talk about the real reason most local ad campaigns never work. It is not the budget. It is not the targeting. This module breaks down the root cause so everything else we cover actually sticks.', duration: '12 min', author: 'Parker Harris', avatar: '../assets/images/parker-harris.png' },
-      { num: '02', title: 'The Offer — What You\'re Actually Selling', desc: 'Most businesses advertise their service. The ones that win advertise the outcome. This module walks through how to reframe your offer so it speaks directly to what your customer actually wants.', duration: '9 min', author: 'Taylor Jackson', avatar: '../assets/images/taylor-jackson.png' },
-      { num: '03', title: 'Meta Ads Fundamentals', desc: 'Campaign structure, budget logic, audience targeting, and why most accounts are set up backwards. This is the foundation everything else is built on.', duration: '18 min', author: 'Parker Harris', avatar: '../assets/images/parker-harris.png' },
-      { num: '04', title: 'Landing Pages That Convert Cold Traffic', desc: 'Getting the click is step one. Turning that click into a booked call is the hard part. We cover message match, page structure, and the one thing that makes or breaks conversion rate.', duration: '14 min', author: 'Taylor Jackson', avatar: '../assets/images/taylor-jackson.png' },
-      { num: '05', title: 'The Follow-Up System', desc: 'Speed is everything. This module covers the exact automation sequence we use to contact new leads in under two minutes and keep following up until they book or tell us to stop.', duration: '11 min', author: 'Parker Harris', avatar: '../assets/images/parker-harris.png' },
-      { num: '06', title: 'Email & SMS Sequences', desc: 'Long-term nurture is where most businesses leave money on the table. This module covers the five-touch sequence that warms up leads who were not ready to book the first time around.', duration: '16 min', author: 'Taylor Jackson', avatar: '../assets/images/taylor-jackson.png' },
-      { num: '07', title: 'Reading Your Numbers', desc: 'Cost per lead, cost per call booked, show rate, close rate — these are the four numbers that tell you whether your system is working. We show you exactly how to read them and what to do about each one.', duration: '10 min', author: 'Parker Harris', avatar: '../assets/images/parker-harris.png' },
-      { num: '08', title: 'Scaling What Works', desc: 'Once the machine is running, the job is simple: put more money in and get more results out. This module covers how to scale budgets without breaking performance and when to expand to new markets.', duration: '20 min', author: 'Parker Harris', avatar: '../assets/images/parker-harris.png' },
+      { num: '01', title: 'Why Most Local Ads Fail', desc: 'Before we get into tactics, we need to talk about the real reason most local ad campaigns never work. It is not the budget. It is not the targeting. This module breaks down the root cause so everything else we cover actually sticks.', duration: '12 min', author: 'Parker Harris', avatar: '../assets/images/parker-harris.png', thumb: '../assets/images/parker-harris-800.png' },
+      { num: '02', title: 'The Offer — What You\'re Actually Selling', desc: 'Most businesses advertise their service. The ones that win advertise the outcome. This module walks through how to reframe your offer so it speaks directly to what your customer actually wants.', duration: '9 min', author: 'Taylor Jackson', avatar: '../assets/images/taylor-jackson.png', thumb: '../assets/images/taylor-jackson-800.png' },
+      { num: '03', title: 'Meta Ads Fundamentals', desc: 'Campaign structure, budget logic, audience targeting, and why most accounts are set up backwards. This is the foundation everything else is built on.', duration: '18 min', author: 'Parker Harris', avatar: '../assets/images/parker-harris.png', thumb: '../assets/images/parker-harris-800.png' },
+      { num: '04', title: 'Landing Pages That Convert Cold Traffic', desc: 'Getting the click is step one. Turning that click into a booked call is the hard part. We cover message match, page structure, and the one thing that makes or breaks conversion rate.', duration: '14 min', author: 'Taylor Jackson', avatar: '../assets/images/taylor-jackson.png', thumb: '../assets/images/taylor-jackson-800.png' },
+      { num: '05', title: 'The Follow-Up System', desc: 'Speed is everything. This module covers the exact automation sequence we use to contact new leads in under two minutes and keep following up until they book or tell us to stop.', duration: '11 min', author: 'Parker Harris', avatar: '../assets/images/parker-harris.png', thumb: '../assets/images/parker-harris-800.png' },
+      { num: '06', title: 'Email & SMS Sequences', desc: 'Long-term nurture is where most businesses leave money on the table. This module covers the five-touch sequence that warms up leads who were not ready to book the first time around.', duration: '16 min', author: 'Taylor Jackson', avatar: '../assets/images/taylor-jackson.png', thumb: '../assets/images/taylor-jackson-800.png' },
+      { num: '07', title: 'Reading Your Numbers', desc: 'Cost per lead, cost per call booked, show rate, close rate — these are the four numbers that tell you whether your system is working. We show you exactly how to read them and what to do about each one.', duration: '10 min', author: 'Parker Harris', avatar: '../assets/images/parker-harris.png', thumb: '../assets/images/parker-harris-800.png' },
+      { num: '08', title: 'Scaling What Works', desc: 'Once the machine is running, the job is simple: put more money in and get more results out. This module covers how to scale budgets without breaking performance and when to expand to new markets.', duration: '20 min', author: 'Parker Harris', avatar: '../assets/images/parker-harris.png', thumb: '../assets/images/parker-harris-800.png' },
     ];
 
     var items = document.querySelectorAll('.module-item');
@@ -325,6 +321,7 @@
     var lessonTitle = document.getElementById('lesson-title');
     var lessonDesc = document.getElementById('lesson-desc');
     var lessonDuration = document.getElementById('lesson-duration');
+    var thumbEl = document.querySelector('.video-box .thumb');
 
     items.forEach(function (item) {
       item.addEventListener('click', function () {
@@ -337,6 +334,8 @@
         lessonTitle.textContent = m.title;
         lessonDesc.textContent = m.desc;
         lessonDuration.textContent = m.duration;
+
+        if (thumbEl) { thumbEl.src = m.thumb; }
 
         var authorEl = document.querySelector('.lesson-author .text-sm');
         var avatarEl = document.querySelector('.lesson-author img');

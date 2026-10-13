@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Education | Motion Marketing</title>
+  <meta name="robots" content="index, follow">
+  <meta name="description" content="Free videos, frameworks, and playbooks on generating leads for local service businesses. Everything we know, yours to keep.">
+
+  <!-- Favicon -->
+  <link rel="icon" href="../favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/apple-touch-icon.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="../assets/css/styles.css">
+
+  <style>
+    :root { --background: #f1f5e8; --card: #f1f5e8; }
+
+    #site-logo { height: 64px; }
+    @media(min-width: 768px) { #site-logo { height: 72px; } }
+
+    h1 em, h2 em {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-style: italic;
+      font-weight: 600;
+    }
+
+    /* Education cards */
+    #edu-grid > a {
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out,
+                  border-color 0.35s ease, box-shadow 0.35s ease;
+    }
+    #edu-grid > a:nth-child(3n+1) { transition-delay: 0s,   0s,   0s, 0s; }
+    #edu-grid > a:nth-child(3n+2) { transition-delay: 0.1s, 0.1s, 0s, 0s; }
+    #edu-grid > a:nth-child(3n+3) { transition-delay: 0.2s, 0.2s, 0s, 0s; }
+    #edu-grid > a:hover {
+      border-color: #82ee63;
+      box-shadow: 0 14px 36px rgba(130, 238, 99, 0.28);
+      transform: translateY(-4px);
+      transition-delay: 0s;
+      transition-duration: 0.35s;
+    }
+    #edu-grid > a:hover .thumb-img { transform: scale(1.04); }
+    .thumb-img { transition: transform 0.5s ease; }
+
+    /* Featured card */
+    .featured-card:hover {
+      border-color: #82ee63;
+      box-shadow: 0 14px 36px rgba(130, 238, 99, 0.28);
+      transform: translateY(-3px);
+    }
+    .featured-card { transition: border-color 0.35s ease, box-shadow 0.35s ease, transform 0.35s ease; }
+    .featured-card:hover .thumb-img { transform: scale(1.03); }
+
+    /* Thumbnail */
+    .thumb-dark { background: linear-gradient(135deg, #161617 0%, #2c2c2e 100%); }
+
+    /* Play button */
+    .play-btn {
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(255,255,255,0.18);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.3);
+      transition: transform 0.25s ease, background 0.25s ease;
+    }
+    #edu-grid > a:hover .play-btn,
+    .featured-card:hover .play-btn {
+      transform: scale(1.1);
+      background: rgba(130, 238, 99, 0.35);
+    }
+
+    /* Type badge */
+    .badge-video {
+      background: rgba(130, 238, 99, 0.18);
+      color: #3a6600;
+      border: 1px solid rgba(130, 238, 99, 0.35);
+    }
+    .badge-guide {
+      background: rgba(3, 2, 19, 0.07);
+      color: #030213;
+      border: 1px solid rgba(3, 2, 19, 0.15);
+    }
+    .badge-playbook {
+      background: rgba(255,255,255,0.18);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.3);
+    }
+
+    /* Card content */
+    @media (max-width: 767px) {
+      #edu-grid { gap: 0.75rem; }
+      #edu-grid > a > .card-content { padding: 1.25rem 1.4rem; }
+    }
+    @media (min-width: 768px) {
+      #edu-grid { gap: 1.75rem; }
+      #edu-grid > a > .card-content { padding: 2rem; }
+      #edu-grid > a > .card-content .card-title { font-size: 1.15rem; }
+    }
+
+    /* Filter pills */
+    .filter-pill {
+      display: inline-flex; align-items: center;
+      border-radius: 9999px;
+      font-size: 0.875rem; font-weight: 500;
+      cursor: pointer; border: none; background: none;
+      position: relative; overflow: hidden;
+      padding: 2.5px; flex-shrink: 0;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+    .filter-pill:hover { transform: translateY(-1px); }
+    .filter-pill:not(.active) {
+      background: linear-gradient(145deg, rgba(130,238,99,0.55) 0%, rgba(180,245,161,0.25) 40%, rgba(255,255,255,0.45) 100%);
+      border: 1px solid rgba(130,238,99,0.6);
+      box-shadow: 0 4px 20px rgba(130,238,99,0.2),
+                  0 1px 0 rgba(255,255,255,0.8) inset,
+                  0 -1px 0 rgba(130,238,99,0.15) inset;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+    .filter-pill.active::before {
+      content: "";
+      background: conic-gradient(#0000 0deg,#82ee63 35deg,#b4f5a1 70deg,#82ee63 105deg,#0000 150deg);
+      filter: drop-shadow(0 0 3px rgba(130,238,99,0.7));
+      width: 400%; height: 400%;
+      animation: 2s linear infinite neon-spin;
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%,-50%) rotate(0deg);
+    }
+    .filter-pill .pill-label {
+      position: relative; z-index: 1;
+      padding: 6px 16px; border-radius: 9999px;
+      display: inline-flex; align-items: center;
+      white-space: nowrap; color: #1a1a1a;
+    }
+    .filter-pill.active .pill-label {
+      background: #f1f5e8; color: #030213;
+    }
+  </style>
+</head>
+
+<body class="min-h-screen bg-background">
+
+  <!-- Nav -->
+  <nav class="absolute top-0 left-0 right-0 z-50 p-4 md:p-6 flex items-center justify-between">
+    <a href="../">
+      <img src="../assets/images/logo.png" alt="Motion Marketing" id="site-logo" class="w-auto">
+    </a>
+    <a href="../discovery-call/"
+       class="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium text-white"
+       style="background-color: #030213;">
+      Get in touch
+    </a>
+  </nav>
+
+  <!-- Hero -->
+  <section class="relative pb-16 px-6 text-center" style="padding-top: max(11rem, calc(50vh - 15rem));">
+    <div class="max-w-3xl mx-auto scroll-reveal">
+      <div class="inline-flex items-center gap-2 mb-8 px-4 py-2 bg-primary/5 rounded-full border border-primary/10">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+             stroke-linecap="round" stroke-linejoin="round" class="text-primary" aria-hidden="true">
+          <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
+        </svg>
+        <span class="text-sm text-primary">Free Education</span>
+      </div>
+      <h1 class="text-5xl md:text-7xl font-semibold tracking-tight mb-8 leading-none">
+        <span class="bg-gradient-to-br from-foreground to-foreground/60 bg-clip-text text-transparent">The Motion </span><em style="color: #82ee63;">Education</em>
+      </h1>
+      <p class="text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+        Every framework, playbook, and video we use to grow local service businesses. No email required. No course fee. Just the actual stuff that works.
+      </p>
+    </div>
+  </section>
+
+  <!-- Content -->
+  <main class="px-6 pb-4">
+    <div class="max-w-7xl mx-auto">
+
+      <!-- Featured -->
+      <a href="#" class="featured-card scroll-reveal block rounded-3xl overflow-hidden border border-border bg-card mb-10 md:mb-14 md:flex">
+        <div class="md:w-1/2 aspect-video md:aspect-auto thumb-dark relative overflow-hidden">
+          <img src="../assets/images/meta-dashboard.png" alt=""
+               class="thumb-img w-full h-full object-cover opacity-60 absolute inset-0">
+          <div class="absolute inset-0 bg-gradient-to-tr from-black/40 to-transparent"></div>
+          <div class="absolute inset-0 flex items-center justify-center">
+            <div class="play-btn">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="white" stroke="none" aria-hidden="true">
+                <polygon points="5 3 19 12 5 21 5 3"/>
+              </svg>
+            </div>
+          </div>
+          <span class="absolute top-4 left-4 text-xs font-medium px-3 py-1 rounded-full badge-playbook">Featured</span>
+        </div>
+        <div class="md:w-1/2 p-8 md:p-10 flex flex-col justify-center">
+          <div class="flex items-center gap-2 mb-4">
+            <span class="text-xs font-medium px-3 py-1 rounded-full badge-video">Video Series</span>
+            <span class="text-xs text-muted-foreground">Meta Ads</span>
+          </div>
+          <div class="text-2xl md:text-3xl font-semibold text-foreground leading-snug mb-4">
+            The Complete Meta Ads Playbook for Local Service Businesses
+          </div>
+          <p class="text-sm leading-relaxed text-muted-foreground mb-6">
+            Five videos. One system. We break down exactly how we build, test, and scale Meta ad campaigns for service businesses in competitive local markets.
+          </p>
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2.5">
+              <img src="../assets/images/parker-harris.png" alt="Parker Harris"
+                   class="w-7 h-7 rounded-full object-cover border border-border"
+                   style="object-position: center top;">
+              <span class="text-sm font-medium text-foreground">Parker Harris</span>
+            </div>
+            <span class="text-xs text-muted-foreground">5 videos &middot; 48 min total</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Filter pills -->
+      <div id="filter-pills" class="flex flex-wrap gap-3 justify-center mb-12">
+        <button class="filter-pill active" data-filter="all">
+          <span class="pill-label">All</span>
+        </button>
+        <button class="filter-pill" data-filter="meta-ads">
+          <span class="pill-label">Meta Ads</span>
+        </button>
+        <button class="filter-pill" data-filter="landing-pages">
+          <span class="pill-label">Landing Pages &amp; Funnels</span>
+        </button>
+        <button class="filter-pill" data-filter="automations">
+          <span class="pill-label">Automations</span>
+        </button>
+        <button class="filter-pill" data-filter="email-sms">
+          <span class="pill-label">Email / SMS</span>
+        </button>
+      </div>
+
+      <!-- Grid -->
+      <div id="edu-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <!-- Card 1 -->
+        <a href="#" class="rounded-3xl overflow-hidden border border-border bg-card scroll-reveal block" data-category="meta-ads">
+          <div class="aspect-[16/9] thumb-dark relative overflow-hidden">
+            <img src="../assets/images/meta-dashboard.png" alt=""
+                 class="thumb-img w-full h-full object-cover opacity-60 absolute inset-0">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+            <div class="absolute inset-0 flex items-center justify-center">
+              <div class="play-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="white" stroke="none" aria-hidden="true">
+                  <polygon points="5 3 19 12 5 21 5 3"/>
+                </svg>
+              </div>
+            </div>
+            <span class="badge-video absolute top-4 right-4 text-xs font-medium px-3 py-1 rounded-full">Video</span>
+          </div>
+          <div class="card-content p-8">
+            <div class="card-title font-semibold text-lg text-foreground mb-3 leading-snug">
+              Why Your Meta Ads Get Clicks But Zero Calls
+            </div>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-2.5">
+                <img src="../assets/images/parker-harris.png" alt="Parker Harris"
+                     class="w-7 h-7 rounded-full object-cover border border-border"
+                     style="object-position: center top;">
+                <span class="text-sm font-medium text-foreground">Parker Harris</span>
+              </div>
+              <span class="text-xs text-muted-foreground">12 min</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Card 2 -->
+        <a href="#" class="rounded-3xl overflow-hidden border border-border bg-card scroll-reveal block" data-category="landing-pages">
+          <div class="aspect-[16/9] thumb-dark relative overflow-hidden">
+            <img src="../assets/images/meta-dashboard.png" alt=""
+                 class="thumb-img w-full h-full object-cover opacity-60 absolute inset-0">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+            <span class="badge-guide absolute top-4 right-4 text-xs font-medium px-3 py-1 rounded-full">Guide</span>
+          </div>
+          <div class="card-content p-8">
+            <div class="card-title font-semibold text-lg text-foreground mb-3 leading-snug">
+              The Landing Page Blueprint That Converts Cold Traffic
+            </div>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-2.5">
+                <img src="../assets/images/taylor-jackson.png" alt="Taylor Jackson"
+                     class="w-7 h-7 rounded-full object-cover border border-border"
+                     style="object-position: center top;">
+                <span class="text-sm font-medium text-foreground">Taylor Jackson</span>
+              </div>
+              <span class="text-xs text-muted-foreground">8 min read</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Card 3 -->
+        <a href="#" class="rounded-3xl overflow-hidden border border-border bg-card scroll-reveal block" data-category="automations">
+          <div class="aspect-[16/9] thumb-dark relative overflow-hidden">
+            <img src="../assets/images/meta-dashboard.png" alt=""
+                 class="thumb-img w-full h-full object-cover opacity-60 absolute inset-0">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+            <div class="absolute inset-0 flex items-center justify-center">
+              <div class="play-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="white" stroke="none" aria-hidden="true">
+                  <polygon points="5 3 19 12 5 21 5 3"/>
+                </svg>
+              </div>
+            </div>
+            <span class="badge-video absolute top-4 right-4 text-xs font-medium px-3 py-1 rounded-full">Video</span>
+          </div>
+          <div class="card-content p-8">
+            <div class="card-title font-semibold text-lg text-foreground mb-3 leading-snug">
+              The Follow-Up Sequence That Books Calls on Autopilot
+            </div>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-2.5">
+                <img src="../assets/images/parker-harris.png" alt="Parker Harris"
+                     class="w-7 h-7 rounded-full object-cover border border-border"
+                     style="object-position: center top;">
+                <span class="text-sm font-medium text-foreground">Parker Harris</span>
+              </div>
+              <span class="text-xs text-muted-foreground">18 min</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Card 4 -->
+        <a href="#" class="rounded-3xl overflow-hidden border border-border bg-card scroll-reveal block" data-category="email-sms">
+          <div class="aspect-[16/9] thumb-dark relative overflow-hidden">
+            <img src="../assets/images/meta-dashboard.png" alt=""
+                 class="thumb-img w-full h-full object-cover opacity-60 absolute inset-0">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+            <span class="badge-guide absolute top-4 right-4 text-xs font-medium px-3 py-1 rounded-full">Playbook</span>
+          </div>
+          <div class="card-content p-8">
+            <div class="card-title font-semibold text-lg text-foreground mb-3 leading-snug">
+              The 5-Email Nurture Sequence Every Service Business Needs
+            </div>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-2.5">
+                <img src="../assets/images/taylor-jackson.png" alt="Taylor Jackson"
+                     class="w-7 h-7 rounded-full object-cover border border-border"
+                     style="object-position: center top;">
+                <span class="text-sm font-medium text-foreground">Taylor Jackson</span>
+              </div>
+              <span class="text-xs text-muted-foreground">6 min read</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Card 5 -->
+        <a href="#" class="rounded-3xl overflow-hidden border border-border bg-card scroll-reveal block" data-category="meta-ads">
+          <div class="aspect-[16/9] thumb-dark relative overflow-hidden">
+            <img src="../assets/images/meta-dashboard.png" alt=""
+                 class="thumb-img w-full h-full object-cover opacity-60 absolute inset-0">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+            <div class="absolute inset-0 flex items-center justify-center">
+              <div class="play-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="white" stroke="none" aria-hidden="true">
+                  <polygon points="5 3 19 12 5 21 5 3"/>
+                </svg>
+              </div>
+            </div>
+            <span class="badge-video absolute top-4 right-4 text-xs font-medium px-3 py-1 rounded-full">Video</span>
+          </div>
+          <div class="card-content p-8">
+            <div class="card-title font-semibold text-lg text-foreground mb-3 leading-snug">
+              How We Spent $5K and Booked 47 Calls in 30 Days
+            </div>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-2.5">
+                <img src="../assets/images/parker-harris.png" alt="Parker Harris"
+                     class="w-7 h-7 rounded-full object-cover border border-border"
+                     style="object-position: center top;">
+                <span class="text-sm font-medium text-foreground">Parker Harris</span>
+              </div>
+              <span class="text-xs text-muted-foreground">22 min</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Card 6 -->
+        <a href="#" class="rounded-3xl overflow-hidden border border-border bg-card scroll-reveal block" data-category="landing-pages">
+          <div class="aspect-[16/9] thumb-dark relative overflow-hidden">
+            <img src="../assets/images/meta-dashboard.png" alt=""
+                 class="thumb-img w-full h-full object-cover opacity-60 absolute inset-0">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+            <span class="badge-guide absolute top-4 right-4 text-xs font-medium px-3 py-1 rounded-full">Guide</span>
+          </div>
+          <div class="card-content p-8">
+            <div class="card-title font-semibold text-lg text-foreground mb-3 leading-snug">
+              What NW Arkansas Businesses Get Wrong About Their Website
+            </div>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-2.5">
+                <img src="../assets/images/taylor-jackson.png" alt="Taylor Jackson"
+                     class="w-7 h-7 rounded-full object-cover border border-border"
+                     style="object-position: center top;">
+                <span class="text-sm font-medium text-foreground">Taylor Jackson</span>
+              </div>
+              <span class="text-xs text-muted-foreground">5 min read</span>
+            </div>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="pt-24 pb-10 text-center text-sm text-muted-foreground">
+    <p>&copy; 2026 Motion Marketing. All rights reserved.</p>
+    <p class="mt-2">
+      <a href="../privacy-policy/" class="hover:text-foreground transition-colors underline">Privacy Policy</a>
+      <span class="mx-2">&middot;</span>
+      <a href="../terms-of-service/" class="hover:text-foreground transition-colors underline">Terms of Service</a>
+    </p>
+  </footer>
+
+  <script src="../assets/js/main.js"></script>
+  <script>
+    (function () {
+      var pills = document.querySelectorAll('.filter-pill');
+      var cards = document.querySelectorAll('#edu-grid > a');
+
+      pills.forEach(function (pill) {
+        pill.addEventListener('click', function () {
+          pills.forEach(function (p) { p.classList.remove('active'); });
+          pill.classList.add('active');
+          var filter = pill.dataset.filter;
+          cards.forEach(function (card) {
+            card.style.display = (filter === 'all' || card.dataset.category === filter) ? '' : 'none';
+          });
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

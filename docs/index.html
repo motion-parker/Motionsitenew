@@ -458,36 +458,36 @@
     <!-- ═══════════════════════════════════════════════════
          STAKES — Without / With toggle
     ═══════════════════════════════════════════════════ -->
-    <section id="stakes" class="py-32 px-6 bg-background">
+    <section id="stakes" class="show-with py-32 px-6 bg-background">
       <div class="max-w-5xl mx-auto">
 
         <div class="text-center mb-10 scroll-reveal">
           <h2 class="stake-stack text-3xl md:text-6xl font-semibold mb-6 pb-2">
-            <span class="is-without bg-gradient-to-br from-foreground to-foreground/60 bg-clip-text text-transparent">Running your business<span class="mobile-br"></span> on <em>hope.</em></span>
-            <span class="is-with bg-gradient-to-br from-foreground to-foreground/60 bg-clip-text text-transparent" aria-hidden="true">Running your business<span class="mobile-br"></span> on a <em>system.</em></span>
+            <span aria-hidden="true" class="is-without bg-gradient-to-br from-foreground to-foreground/60 bg-clip-text text-transparent">Running your business<span class="mobile-br"></span> on <em>hope.</em></span>
+            <span class="is-with bg-gradient-to-br from-foreground to-foreground/60 bg-clip-text text-transparent" aria-hidden="false">Running your business<span class="mobile-br"></span> on a <em>system.</em></span>
           </h2>
           <div class="stake-stack text-xl text-muted-foreground max-w-2xl mx-auto">
-            <p class="is-without">Hoping the phone rings. Hoping they remember to call back. Hoping next month is better than this one.</p>
-            <p class="is-with" aria-hidden="true">Leads every week. Every one followed up in minutes. You stop chasing work and start choosing it.</p>
+            <p class="is-without" aria-hidden="true">Hoping the phone rings. Hoping they remember to call back. Hoping next month is better than this one.</p>
+            <p class="is-with" aria-hidden="false">Leads every week. Every one followed up in minutes. You stop chasing work and start choosing it.</p>
           </div>
         </div>
 
         <div class="flex justify-center mb-12 scroll-reveal">
           <div class="stakes-toggle" role="group" aria-label="Compare with and without a system">
-            <button type="button" class="stakes-btn active" data-state="without" aria-pressed="true"><span class="pill-label">Without a system</span></button>
-            <button type="button" class="stakes-btn" data-state="with" aria-pressed="false"><span class="pill-label">With Motion</span></button>
+            <button type="button" class="stakes-btn" data-state="without" aria-pressed="false"><span class="pill-label">Without a system</span></button>
+            <button type="button" class="stakes-btn active" data-state="with" aria-pressed="true"><span class="pill-label">With Motion</span></button>
           </div>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div class="stake-card scroll-reveal">
             <div class="stake-stack">
-              <div class="is-without">
+              <div class="is-without" aria-hidden="true">
                 <span class="stake-chip lost"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>Lead lost</span>
                 <div class="stake-title">Leads that go cold.</div>
                 <p class="stake-body">Someone fills out your form at 7pm. You call back the next afternoon. They already booked someone else.</p>
               </div>
-              <div class="is-with" aria-hidden="true">
+              <div class="is-with" aria-hidden="false">
                 <span class="stake-chip won"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Lead captured</span>
                 <div class="stake-title">Every lead, messaged in minutes.</div>
                 <p class="stake-body">The form comes in at 7pm. Automated SMS and email go out at 7:02, before they call anyone else.</p>
@@ -497,12 +497,12 @@
 
           <div class="stake-card scroll-reveal">
             <div class="stake-stack">
-              <div class="is-without">
+              <div class="is-without" aria-hidden="true">
                 <span class="stake-chip lost"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>Budget wasted</span>
                 <div class="stake-title">Ad spend with nothing to show.</div>
                 <p class="stake-body">Clicks come in, the phone stays quiet, and you can't tell which part is broken.</p>
               </div>
-              <div class="is-with" aria-hidden="true">
+              <div class="is-with" aria-hidden="false">
                 <span class="stake-chip won"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Budget working</span>
                 <div class="stake-title">Every dollar, accounted for.</div>
                 <p class="stake-body">Ads and landing pages built to match, tracked daily, so you know exactly what's working.</p>
@@ -512,27 +512,27 @@
 
           <div class="stake-card scroll-reveal">
             <div class="stake-stack">
-              <div class="is-without">
+              <div class="is-without" aria-hidden="true">
                 <span class="stake-chip lost"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>Revenue missed</span>
                 <div class="stake-title">Past customers you never talk to.</div>
-                <p class="stake-body">Your cheapest source of new jobs is sitting in a list you haven't emailed once.</p>
+                <p class="stake-body">Your cheapest source of new bookings is sitting in a list you haven't emailed once.</p>
               </div>
-              <div class="is-with" aria-hidden="true">
+              <div class="is-with" aria-hidden="false">
                 <span class="stake-chip won"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Revenue recovered</span>
                 <div class="stake-title">Past customers, coming back.</div>
-                <p class="stake-body">Regular email and SMS campaigns turn your existing list into repeat jobs.</p>
+                <p class="stake-body">Regular email and SMS campaigns turn your existing list into repeat bookings.</p>
               </div>
             </div>
           </div>
 
           <div class="stake-card scroll-reveal">
             <div class="stake-stack">
-              <div class="is-without">
+              <div class="is-without" aria-hidden="true">
                 <span class="stake-chip lost"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>Growth stalled</span>
                 <div class="stake-title">The same ceiling, every year.</div>
                 <p class="stake-body">Busy months, slow months, repeat. Growth that depends on referrals and luck.</p>
               </div>
-              <div class="is-with" aria-hidden="true">
+              <div class="is-with" aria-hidden="false">
                 <span class="stake-chip won"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Growth unlocked</span>
                 <div class="stake-title">Growth you can plan around.</div>
                 <p class="stake-body">Consistent leads every month, so you can hire, expand, and scale with confidence.</p>
@@ -564,7 +564,7 @@
 
         <!-- Subheading -->
         <p class="text-xl text-muted-foreground mb-16 scroll-reveal" style="transition-delay: 0.15s;">
-          From scroll to booked job, without you lifting a finger.
+          From scroll to booking, without you lifting a finger.
         </p>
 
         <!-- Steps -->
@@ -611,7 +611,7 @@
             <div class="flex items-center justify-center" style="width: 120px; height: 64px; border-radius: 16px; font-size: 1.75rem; font-weight: 700; background: linear-gradient(145deg, rgba(130, 238, 99,0.55) 0%, rgba(180, 245, 161,0.25) 40%, rgba(255,255,255,0.45) 100%); border: 1px solid rgba(130, 238, 99,0.6); color: #1a1a1a; backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); box-shadow: 0 4px 20px rgba(130, 238, 99,0.2), 0 1px 0 rgba(255,255,255,0.8) inset, 0 -1px 0 rgba(130, 238, 99,0.15) inset;">
               4
             </div>
-            <p class="text-lg font-semibold text-foreground">They book the job.</p>
+            <p class="text-lg font-semibold text-foreground">They book with you.</p>
             <p class="text-sm text-muted-foreground max-w-xs leading-relaxed">Not ready yet? They stay in a nurture sequence until they are.</p>
           </div>
 

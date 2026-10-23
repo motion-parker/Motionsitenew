@@ -183,6 +183,12 @@
       transition: color 0.2s ease;
     }
     .stakes-btn.active .pill-label { color: #030213; }
+    .stakes-btn[data-state="without"].active {
+      background: linear-gradient(145deg, rgba(229,72,77,0.32) 0%, rgba(245,170,172,0.2) 40%, rgba(255,255,255,0.45) 100%);
+      border-color: rgba(229,72,77,0.45);
+      box-shadow: 0 4px 20px rgba(229,72,77,0.15), 0 1px 0 rgba(255,255,255,0.8) inset, 0 -1px 0 rgba(229,72,77,0.12) inset;
+    }
+    .stakes-btn[data-state="without"].active .pill-label { color: #8f1d22; }
 
     /* Stacked states: both live in the same grid cell so height never jumps */
     .stake-stack { display: grid; }

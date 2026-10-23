@@ -156,6 +156,71 @@
     @media (prefers-reduced-motion: reduce) {
       .logo-track { animation: none; }
     }
+
+    /* ── Stakes: Without / With toggle ── */
+    .stakes-toggle { display: inline-flex; gap: 0.75rem; flex-wrap: wrap; justify-content: center; }
+    .stakes-btn {
+      display: inline-flex; align-items: center; border-radius: 9999px;
+      font-size: 0.9rem; font-weight: 500; cursor: pointer; border: none; background: none;
+      position: relative; overflow: hidden; padding: 2.5px; flex-shrink: 0;
+      transition: transform 0.2s ease;
+    }
+    .stakes-btn:hover { transform: translateY(-1px); }
+    .stakes-btn:not(.active) {
+      background: linear-gradient(145deg, rgba(130,238,99,0.55) 0%, rgba(180,245,161,0.25) 40%, rgba(255,255,255,0.45) 100%);
+      border: 1px solid rgba(130,238,99,0.6);
+      box-shadow: 0 4px 20px rgba(130,238,99,0.2), 0 1px 0 rgba(255,255,255,0.8) inset, 0 -1px 0 rgba(130,238,99,0.15) inset;
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+    }
+    .stakes-btn.active::before {
+      content: ""; position: absolute; top: 50%; left: 50%; width: 400%; height: 400%;
+      background: conic-gradient(#0000 0deg, #82ee63 35deg, #b4f5a1 70deg, #82ee63 105deg, #0000 150deg);
+      filter: drop-shadow(0 0 3px rgba(130,238,99,0.7));
+      transform: translate(-50%,-50%) rotate(0deg);
+      animation: 2s linear infinite neon-spin;
+    }
+    .stakes-btn .pill-label {
+      position: relative; z-index: 1; padding: 8px 20px; border-radius: 9999px;
+      display: inline-flex; align-items: center; white-space: nowrap; color: #1a1a1a;
+    }
+    .stakes-btn.active .pill-label { background: #f1f5e8; color: #030213; }
+
+    /* Stacked states: both live in the same grid cell so height never jumps */
+    .stake-stack { display: grid; }
+    .stake-stack > * {
+      grid-area: 1 / 1;
+      transition: opacity 0.45s ease, transform 0.45s ease;
+    }
+    #stakes .is-with  { opacity: 0; transform: translateY(10px); pointer-events: none; }
+    #stakes.show-with .is-without { opacity: 0; transform: translateY(-10px); pointer-events: none; }
+    #stakes.show-with .is-with    { opacity: 1; transform: none; pointer-events: auto; }
+
+    .stake-card {
+      border-radius: 1.5rem; border: 1px solid var(--border); background: var(--card);
+      padding: 1.75rem; text-align: left;
+      transition: border-color 0.45s ease, box-shadow 0.45s ease, opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    #stakes.show-with .stake-card {
+      border-color: rgba(130,238,99,0.7);
+      box-shadow: 0 14px 36px rgba(130,238,99,0.18);
+    }
+    .stake-card:nth-child(2) .stake-stack > * { transition-delay: 0.06s; }
+    .stake-card:nth-child(3) .stake-stack > * { transition-delay: 0.12s; }
+    .stake-card:nth-child(4) .stake-stack > * { transition-delay: 0.18s; }
+
+    .stake-chip {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      font-size: 0.75rem; font-weight: 600; padding: 0.3rem 0.75rem; border-radius: 9999px;
+      margin-bottom: 1rem;
+    }
+    .stake-chip.lost { background: rgba(229,72,77,0.1); color: #b4232a; border: 1px solid rgba(229,72,77,0.25); }
+    .stake-chip.won  { background: rgba(130,238,99,0.18); color: #3a6600; border: 1px solid rgba(130,238,99,0.45); }
+    .stake-title { font-size: 1.15rem; font-weight: 600; color: var(--foreground); margin-bottom: 0.5rem; line-height: 1.35; }
+    .stake-body { font-size: 0.95rem; line-height: 1.65; color: var(--muted-foreground); }
+    @media (min-width: 768px) {
+      .stake-card { padding: 2.25rem; }
+      .stake-title { font-size: 1.3rem; }
+    }
   </style>
 
   <!-- JSON-LD LocalBusiness Schema -->
@@ -382,6 +447,95 @@
           </div>
 
         </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════
+         STAKES — Without / With toggle
+    ═══════════════════════════════════════════════════ -->
+    <section id="stakes" class="py-32 px-6 bg-background">
+      <div class="max-w-5xl mx-auto">
+
+        <div class="text-center mb-10 scroll-reveal">
+          <h2 class="stake-stack text-3xl md:text-6xl font-semibold mb-6 pb-2">
+            <span class="is-without bg-gradient-to-br from-foreground to-foreground/60 bg-clip-text text-transparent">What it's costing you <em>right now.</em></span>
+            <span class="is-with bg-gradient-to-br from-foreground to-foreground/60 bg-clip-text text-transparent" aria-hidden="true">What changes with <em>Motion.</em></span>
+          </h2>
+          <div class="stake-stack text-xl text-muted-foreground max-w-2xl mx-auto">
+            <p class="is-without">Most service businesses aren't losing to better competitors. They're losing to gaps they can't see.</p>
+            <p class="is-with" aria-hidden="true">Same business. Same market. Every gap closed.</p>
+          </div>
+        </div>
+
+        <div class="flex justify-center mb-12 scroll-reveal">
+          <div class="stakes-toggle" role="group" aria-label="Compare with and without a system">
+            <button type="button" class="stakes-btn active" data-state="without" aria-pressed="true"><span class="pill-label">Without a system</span></button>
+            <button type="button" class="stakes-btn" data-state="with" aria-pressed="false"><span class="pill-label">With Motion</span></button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="stake-card scroll-reveal">
+            <div class="stake-stack">
+              <div class="is-without">
+                <span class="stake-chip lost"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>Lead lost</span>
+                <div class="stake-title">Leads that go cold.</div>
+                <p class="stake-body">Someone fills out your form at 7pm. You call back the next afternoon. They already booked someone else.</p>
+              </div>
+              <div class="is-with" aria-hidden="true">
+                <span class="stake-chip won"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Lead captured</span>
+                <div class="stake-title">Every lead, messaged in minutes.</div>
+                <p class="stake-body">The form comes in at 7pm. Automated SMS and email go out at 7:02, before they call anyone else.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="stake-card scroll-reveal">
+            <div class="stake-stack">
+              <div class="is-without">
+                <span class="stake-chip lost"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>Budget wasted</span>
+                <div class="stake-title">Ad spend with nothing to show.</div>
+                <p class="stake-body">Clicks come in, the phone stays quiet, and you can't tell which part is broken.</p>
+              </div>
+              <div class="is-with" aria-hidden="true">
+                <span class="stake-chip won"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Budget working</span>
+                <div class="stake-title">Every dollar, accounted for.</div>
+                <p class="stake-body">Ads and landing pages built to match, tracked daily, so you know exactly what's working.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="stake-card scroll-reveal">
+            <div class="stake-stack">
+              <div class="is-without">
+                <span class="stake-chip lost"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>Revenue missed</span>
+                <div class="stake-title">Past customers you never talk to.</div>
+                <p class="stake-body">Your cheapest source of new jobs is sitting in a list you haven't emailed once.</p>
+              </div>
+              <div class="is-with" aria-hidden="true">
+                <span class="stake-chip won"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Revenue recovered</span>
+                <div class="stake-title">Past customers, coming back.</div>
+                <p class="stake-body">Regular email and SMS campaigns turn your existing list into repeat jobs.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="stake-card scroll-reveal">
+            <div class="stake-stack">
+              <div class="is-without">
+                <span class="stake-chip lost"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>Growth stalled</span>
+                <div class="stake-title">The same ceiling, every year.</div>
+                <p class="stake-body">Busy months, slow months, repeat. Growth that depends on referrals and luck.</p>
+              </div>
+              <div class="is-with" aria-hidden="true">
+                <span class="stake-chip won"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Growth unlocked</span>
+                <div class="stake-title">Growth you can plan around.</div>
+                <p class="stake-body">Consistent leads every month, so you can hire, expand, and scale with confidence.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </section>
 
@@ -889,5 +1043,25 @@
 
   <script src="assets/js/main.js"></script>
   <script src="https://widgets.leadconnectorhq.com/loader.js" data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="6a847bf91013cf7dd5ec1c2b"></script>
+  <script>
+    (function () {
+      var section = document.getElementById('stakes');
+      if (!section) return;
+      var btns = section.querySelectorAll('.stakes-btn');
+      btns.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var showWith = btn.dataset.state === 'with';
+          section.classList.toggle('show-with', showWith);
+          btns.forEach(function (b) {
+            var on = b === btn;
+            b.classList.toggle('active', on);
+            b.setAttribute('aria-pressed', on ? 'true' : 'false');
+          });
+          section.querySelectorAll('.is-with').forEach(function (el) { el.setAttribute('aria-hidden', showWith ? 'false' : 'true'); });
+          section.querySelectorAll('.is-without').forEach(function (el) { el.setAttribute('aria-hidden', showWith ? 'true' : 'false'); });
+        });
+      });
+    })();
+  </script>
 </body>
 </html>

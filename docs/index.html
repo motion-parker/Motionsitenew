@@ -163,27 +163,26 @@
       display: inline-flex; align-items: center; border-radius: 9999px;
       font-size: 0.9rem; font-weight: 500; cursor: pointer; border: none; background: none;
       position: relative; overflow: hidden; padding: 2.5px; flex-shrink: 0;
-      transition: transform 0.2s ease;
+      transition: transform 0.2s ease, background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
     }
     .stakes-btn:hover { transform: translateY(-1px); }
     .stakes-btn:not(.active) {
+      background: var(--card);
+      border: 1px solid var(--border);
+    }
+    .stakes-btn:not(.active) .pill-label { color: var(--muted-foreground); }
+    .stakes-btn.active {
       background: linear-gradient(145deg, rgba(130,238,99,0.55) 0%, rgba(180,245,161,0.25) 40%, rgba(255,255,255,0.45) 100%);
       border: 1px solid rgba(130,238,99,0.6);
       box-shadow: 0 4px 20px rgba(130,238,99,0.2), 0 1px 0 rgba(255,255,255,0.8) inset, 0 -1px 0 rgba(130,238,99,0.15) inset;
       backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
     }
-    .stakes-btn.active::before {
-      content: ""; position: absolute; top: 50%; left: 50%; width: 400%; height: 400%;
-      background: conic-gradient(#0000 0deg, #82ee63 35deg, #b4f5a1 70deg, #82ee63 105deg, #0000 150deg);
-      filter: drop-shadow(0 0 3px rgba(130,238,99,0.7));
-      transform: translate(-50%,-50%) rotate(0deg);
-      animation: 2s linear infinite neon-spin;
-    }
     .stakes-btn .pill-label {
       position: relative; z-index: 1; padding: 8px 20px; border-radius: 9999px;
       display: inline-flex; align-items: center; white-space: nowrap; color: #1a1a1a;
+      transition: color 0.2s ease;
     }
-    .stakes-btn.active .pill-label { background: #f1f5e8; color: #030213; }
+    .stakes-btn.active .pill-label { color: #030213; }
 
     /* Stacked states: both live in the same grid cell so height never jumps */
     .stake-stack { display: grid; }

@@ -100,14 +100,25 @@
     }
     .filter-pill:hover { transform: translateY(-1px); }
     .filter-pill:not(.active) {
-      background: var(--card);
-      border: 1px solid var(--border);
-    }
-    .filter-pill.active {
       background: linear-gradient(145deg, rgba(130,238,99,0.55) 0%, rgba(180,245,161,0.25) 40%, rgba(255,255,255,0.45) 100%);
       border: 1px solid rgba(130,238,99,0.6);
-      box-shadow: 0 4px 20px rgba(130,238,99,0.2), 0 1px 0 rgba(255,255,255,0.8) inset, 0 -1px 0 rgba(130,238,99,0.15) inset;
-      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      box-shadow: 0 4px 20px rgba(130,238,99,0.2),
+                  0 1px 0 rgba(255,255,255,0.8) inset,
+                  0 -1px 0 rgba(130,238,99,0.15) inset;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+    .filter-pill.active::before {
+      content: "";
+      background: conic-gradient(#0000 0deg, #82ee63 35deg, #b4f5a1 70deg, #82ee63 105deg, #0000 150deg);
+      filter: drop-shadow(0 0 3px rgba(130,238,99,0.7));
+      width: 400%;
+      height: 400%;
+      animation: 2s linear infinite neon-spin;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%) rotate(0deg);
     }
     .filter-pill .pill-label {
       position: relative;
@@ -117,9 +128,12 @@
       display: inline-flex;
       align-items: center;
       white-space: nowrap;
-      color: var(--muted-foreground);
+      color: #1a1a1a;
     }
-    .filter-pill.active .pill-label { color: #030213; }
+    .filter-pill.active .pill-label {
+      background: #f1f5e8;
+      color: #030213;
+    }
   </style>
 </head>
 

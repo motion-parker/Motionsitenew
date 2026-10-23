@@ -42,6 +42,31 @@
     #booking-heading { padding-top: 132px; }
     @media(min-width:768px) { #booking-heading { padding-top: 120px; } }
     :root { --background: #f1f5e8; --card: #f1f5e8; }
+
+    /* What to expect */
+    .expect-grid { display: grid; grid-template-columns: 1fr; gap: 0.75rem; max-width: 56rem; margin: 0 auto 2.5rem; }
+    @media (min-width: 768px) { .expect-grid { grid-template-columns: repeat(3, 1fr); gap: 1rem; } }
+    .expect-step {
+      display: flex; align-items: center; gap: 0.9rem; text-align: left;
+      border: 1px solid var(--border); background: var(--card); border-radius: 1.25rem; padding: 1rem 1.25rem;
+    }
+    .expect-num {
+      flex-shrink: 0; width: 40px; height: 40px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center; font-weight: 700; color: #1a1a1a;
+      background: linear-gradient(145deg, rgba(130,238,99,0.55) 0%, rgba(180,245,161,0.25) 40%, rgba(255,255,255,0.45) 100%);
+      border: 1px solid rgba(130,238,99,0.6);
+      box-shadow: 0 4px 20px rgba(130,238,99,0.2), 0 1px 0 rgba(255,255,255,0.8) inset;
+    }
+    .expect-text { font-size: 0.95rem; font-weight: 500; color: var(--foreground); line-height: 1.4; }
+    .expect-label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted-foreground); text-align: center; margin-bottom: 1rem; }
+
+    /* Who you'll talk to */
+    .talk-with { display: flex; align-items: center; justify-content: center; gap: 0.9rem; margin-top: 2.5rem; flex-wrap: wrap; text-align: left; }
+    .talk-faces { display: flex; }
+    .talk-faces img { width: 44px; height: 44px; border-radius: 9999px; object-fit: cover; object-position: center top; border: 2px solid #f1f5e8; }
+    .talk-faces img + img { margin-left: -12px; }
+    .talk-with p { font-size: 0.95rem; color: var(--muted-foreground); max-width: 22rem; margin: 0; }
+    .talk-with strong { color: var(--foreground); font-weight: 600; }
   </style>
 </head>
 
@@ -66,7 +91,7 @@
           <polyline points="22 7 13.5 15.5 8.5 10.5 1 18"/>
           <polyline points="16 7 22 7 22 13"/>
         </svg>
-        <span class="text-sm text-primary">Free · No pressure · Straight talk</span>
+        <span class="text-sm text-primary">For Northwest Arkansas businesses</span>
       </div>
 
       <!-- Heading -->
@@ -77,8 +102,9 @@
 
       <!-- Subheading -->
       <p class="text-xl md:text-2xl text-muted-foreground leading-relaxed max-w-3xl mx-auto mb-12">
-        One call. We map out exactly what the system looks like for your business,
-        what channels make sense, what's broken, and what's leaving money on the table.
+        In 30 minutes, we'll look at how leads find you, what happens after they do,
+        and where bookings are slipping through. You'll leave with a clear plan,
+        whether you work with us or not.
       </p>
 
     </div>
@@ -87,6 +113,15 @@
   <!-- Calendar embed -->
   <section class="pt-0 pb-20 px-6">
     <div class="max-w-4xl mx-auto">
+
+      <!-- What to expect -->
+      <div class="expect-label">What to expect</div>
+      <div class="expect-grid">
+        <div class="expect-step"><div class="expect-num">1</div><div class="expect-text">Pick a time below.</div></div>
+        <div class="expect-step"><div class="expect-num">2</div><div class="expect-text">We talk through where your leads come from and where they're getting lost.</div></div>
+        <div class="expect-step"><div class="expect-num">3</div><div class="expect-text">You leave with a plan for more bookings.</div></div>
+      </div>
+
         <!-- LeadConnector booking widget. form_embed.js auto-resizes the iframe height. -->
         <iframe
           src="https://api.leadconnectorhq.com/widget/bookings/discovery-motion"
@@ -99,6 +134,15 @@
           title="Book a Discovery Call with Motion Marketing">
         </iframe>
       <script src="https://link.msgsndr.com/js/form_embed.js" type="text/javascript"></script>
+
+      <!-- Who you'll talk to -->
+      <div class="talk-with">
+        <div class="talk-faces">
+          <img src="../assets/images/parkerheadshot2.PNG" alt="Parker Harris">
+          <img src="../assets/images/taylor-jackson-400.png" alt="Taylor Jackson">
+        </div>
+        <p>You'll talk with <strong>Parker or Taylor</strong>, the people who'd actually build your system.</p>
+      </div>
 
       <!-- Trust line -->
       <p class="mt-12 text-center text-sm text-muted-foreground">

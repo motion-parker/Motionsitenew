@@ -196,6 +196,9 @@
       grid-area: 1 / 1;
       transition: opacity 0.45s ease, transform 0.45s ease;
     }
+    /* text-6xl sets line-height to 1, so with bg-clip-text the descenders
+       in "Running" and "hope" fall outside the span's paint box and clip. */
+    #stakes h2.stake-stack > span { padding-bottom: 0.12em; }
     #stakes .is-with  { opacity: 0; transform: translateY(10px); pointer-events: none; }
     #stakes.show-with .is-without { opacity: 0; transform: translateY(-10px); pointer-events: none; }
     #stakes.show-with .is-with    { opacity: 1; transform: none; pointer-events: auto; }
